@@ -25,6 +25,11 @@ Learn more at https://docs.docker.com/go/debug-cli/ then:
 ```
 docker debug my-postgres
 ```
+postgresdb container logs:
+
+```
+docker logs my-postgresdb 
+```
 
 check container is up on docker.
 ```
@@ -100,3 +105,23 @@ If you wnat to Step out of the local environment
 deactivate
 ```
 
+Run these:
+
+```
+1. py config.py   
+2. py logging_config.py 
+3. py DB_SetUp.py  
+4. py Postgres_SetUp.py 
+```
+
+Run the select statement
+
+```
+5. select * from test_users;
+```
+
+Drop the test_users table:
+
+```
+drop table if exists test_users;
+```
