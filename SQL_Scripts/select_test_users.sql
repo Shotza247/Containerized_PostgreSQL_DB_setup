@@ -1,1 +1,1 @@
-drop table if exists test_users;
+select * from test_users;
