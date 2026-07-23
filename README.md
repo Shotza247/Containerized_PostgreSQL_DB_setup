@@ -11,7 +11,7 @@ docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432
 * -e POSTGRES_PASSWORD=mysecretpassword: Sets your mandatory database password. Change mysecretpassword to whatever you prefer.
 * -p 5432:5432: Maps port 5432 from inside the container to port 5432 on your local machine.
 * -d: Runs the container in the background (detached mode).
-* postgres: Uses the latest official PostgreSQL image from Docker Hub. [2, 3, 4, 5, 6] 
+* postgres: Uses the latest official PostgreSQL image from Docker Hub.
 
 ## 3. Connect to Your Database
 To connect to the database command line (psql) inside your running container, run:
@@ -56,4 +56,28 @@ or, if using psycopg 3:
 
 ```
 -> psycopg[binary]==3.x.x
+```
+
+or run:
+
+```
+pip freeze > requirements.txt
+```
+
+or
+
+```
+pip install -r requirements.txt 
+```
+
+Verify the installed version:
+
+```
+py -c "import psycopg2; print(psycopg2.__version__)"as
+```
+
+To Step out of the local environment:
+
+```
+deactivate
 ```

@@ -1,14 +1,21 @@
 import psycopg2
+import logging as log
+import os
+#from dotenv import load_dotenv
+
+#load_dotenv()  # Load environment variables from .env file
 
 try:
     # 1. Connect to the PostgreSQL database running in Docker
-    connection = psycopg2.connect(
-        host="localhost",          # Running on your local machine
-        database="postgres",       # Default database name in the official image
-        user="postgres",           # Default user name in the official image
-        password="mysecretpassword", # The password you set in the docker run command
-        port="5432"                # The mapped port
-    )
+    DB_CONFIG = {
+    "host": os.getenv("DB_HOST"),
+    "port": os.getenv("DB_PORT"),
+    "database": os.getenv("DB_NAME"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+}
+    
+    connection = psycopg2.connect(**DB_CONFIG)
 
     # 2. Create a cursor object to execute SQL commands
     cursor = connection.cursor()
