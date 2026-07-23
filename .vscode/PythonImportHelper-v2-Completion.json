@@ -172,26 +172,42 @@
     },
     {
         "label": "get_postgres_version",
-        "importPath": "DBOps",
-        "description": "DBOps",
+        "importPath": "Repository.InventoryRepo",
+        "description": "Repository.InventoryRepo",
         "isExtraImport": true,
-        "detail": "DBOps",
+        "detail": "Repository.InventoryRepo",
         "documentation": {}
     },
     {
-        "label": "create_test_table",
-        "importPath": "DBOps",
-        "description": "DBOps",
+        "label": "create_item",
+        "importPath": "Repository.InventoryRepo",
+        "description": "Repository.InventoryRepo",
         "isExtraImport": true,
-        "detail": "DBOps",
+        "detail": "Repository.InventoryRepo",
         "documentation": {}
     },
     {
-        "label": "insert_test_user",
-        "importPath": "DBOps",
-        "description": "DBOps",
+        "label": "get_item_by_id",
+        "importPath": "Repository.InventoryRepo",
+        "description": "Repository.InventoryRepo",
         "isExtraImport": true,
-        "detail": "DBOps",
+        "detail": "Repository.InventoryRepo",
+        "documentation": {}
+    },
+    {
+        "label": "get_item_by_sku",
+        "importPath": "Repository.InventoryRepo",
+        "description": "Repository.InventoryRepo",
+        "isExtraImport": true,
+        "detail": "Repository.InventoryRepo",
+        "documentation": {}
+    },
+    {
+        "label": "list_items",
+        "importPath": "Repository.InventoryRepo",
+        "description": "Repository.InventoryRepo",
+        "isExtraImport": true,
+        "detail": "Repository.InventoryRepo",
         "documentation": {}
     },
     {
@@ -2341,7 +2357,7 @@
         "kind": 5,
         "importPath": "Postgres_SetUp",
         "description": "Postgres_SetUp",
-        "peekOfCode": "connection = None\ntry:\n    connection = connect()\n    version = get_postgres_version(connection)\n    logger.info(\"Connected to PostgreSQL: %s\", version)\n    create_test_table(connection)\n    logger.info(\"Table verified.\")\n    user_id = insert_test_user(connection, \"Alice\")\n    logger.info(\"Inserted user with ID: %s\", user_id)\nexcept Exception:",
+        "peekOfCode": "connection = None\ntry:\n    connection = connect()\n    version = get_postgres_version(connection)\n    logger.info(\"Connected to PostgreSQL: %s\", version)\n    #Verify the postgres version\n    version = get_postgres_version(connection)\n    logger.info(version)\n    #Create a new item in the inventory\n    item_id = create_item(",
         "detail": "Postgres_SetUp",
         "documentation": {}
     }

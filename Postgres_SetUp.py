@@ -1,9 +1,12 @@
 from DB_SetUp import connect
-from DBOps import (
+from Repository.InventoryRepo import (
     get_postgres_version,
-    create_test_table,
-    insert_test_user,
+    create_item,
+    get_item_by_id,
+    get_item_by_sku,
+    list_items,
 )
+
 from logging_config import logger
 
 connection = None
@@ -14,13 +17,33 @@ try:
     version = get_postgres_version(connection)
     logger.info("Connected to PostgreSQL: %s", version)
 
-    create_test_table(connection)
-    logger.info("Table verified.")
+    #Verify the postgres version
+    version = get_postgres_version(connection)
+    logger.info(version)
 
-    user_id = insert_test_user(connection, "Alice")
-    logger.info("Inserted user with ID: %s", user_id)
+    #Create a new item in the inventory
+    item_id = create_item(
+    connection,
+    "SKU012",
+    "Laptop",
+    5,
+    9999.99)
+    logger.info("Inserted Item ID: %s", item_id)
+    
+    #Get item by id
+    item = get_item_by_id(connection, item_id)
+    logger.info(item)
+    
+    #Read by sku
+    item = get_item_by_sku(connection, "SKU001")
+    logger.info(item)
+
+    #list all items
+    items = list_items(connection)
+    logger.info(items)
 
 except Exception:
+    connection.rollback()
     logger.exception("Application failed.")
 
 finally:
