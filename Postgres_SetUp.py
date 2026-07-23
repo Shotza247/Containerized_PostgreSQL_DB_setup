@@ -1,5 +1,5 @@
 from utils.DB_SetUp import connect
-from Repository.InventoryRepo import (
+from repository.inventory_repo import (
     get_postgres_version,
     create_item,
     get_item_by_id,
