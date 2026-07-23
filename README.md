@@ -133,3 +133,6 @@ Rerun this:
 - py DB_SetUp.py
 - py DBOps.py
 - py Postgres_SetUp.py 
+
+with everything updated, we rerun:
+py Postgres_SetUp.py
