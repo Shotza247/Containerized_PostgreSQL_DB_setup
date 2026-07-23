@@ -1,0 +1,105 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "DB_CONFIG",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "logging_config",
+        "description": "logging_config",
+        "isExtraImport": true,
+        "detail": "logging_config",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "logging_config",
+        "description": "logging_config",
+        "isExtraImport": true,
+        "detail": "logging_config",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "DB_CONFIG",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DB_CONFIG = {\n    \"host\": os.getenv(\"DB_HOST\"),\n    \"port\": os.getenv(\"DB_PORT\"),\n    \"database\": os.getenv(\"DB_NAME\"),\n    \"user\": os.getenv(\"DB_USER\"),\n    \"password\": os.getenv(\"DB_PASSWORD\"),\n}",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "kind": 2,
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "peekOfCode": "def connect():\n    connection = None\n    cursor = None\n    try:\n        logger.info(\"Connecting to PostgreSQL...\")\n        connection = psycopg2.connect(**DB_CONFIG)\n        logger.info(\"Connection successful.\")\n        # Create a cursor\n        cursor = connection.cursor()\n        # Check PostgreSQL version",
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "logging_config",
+        "description": "logging_config",
+        "peekOfCode": "logger = logging.getLogger(\"postgres\")",
+        "detail": "logging_config",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "Postgres_SetUp",
+        "description": "Postgres_SetUp",
+        "peekOfCode": "def main():\n    conn = None\n    try:\n        conn = connect()\n    finally:\n        if conn:\n            conn.close()\n            logger.info(\"Connection closed.\")\nif __name__ == \"__main__\":\n    main()",
+        "detail": "Postgres_SetUp",
+        "documentation": {}
+    }
+]
