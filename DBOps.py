@@ -1,13 +1,4 @@
-def get_postgres_version(connection):
-    cursor = connection.cursor()
 
-    cursor.execute("SELECT version();")
-
-    version = cursor.fetchone()[0]
-
-    cursor.close()
-
-    return version
 
 def create_test_table(connection):
     cursor = connection.cursor()
