@@ -1,7 +1,7 @@
 To run PostgreSQL inside a Docker container instead of installing it directly onto your operating system, follow these steps.
 
 ## 1. Run the PostgreSQL Container
-Open your terminal and run the following command. This will automatically pull the official image and start the database: [1] 
+Open your terminal and run the following command. This will automatically pull the official image and start the database:
 
 docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
 
@@ -16,7 +16,24 @@ docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432
 ## 3. Connect to Your Database
 To connect to the database command line (psql) inside your running container, run:
 
+```
 docker exec -it my-postgres psql -U postgres
+```
+
+Learn more at https://docs.docker.com/go/debug-cli/ then:
+
+```
+docker debug my-postgres
+```
+
+check container is up on docker.
+```
+docker ps   
+```
+
+output:
+CONTAINER ID   IMAGE      COMMAND                 CREATED       STATUS            PORTS                        NAMES
+aa0ac00822ce   postgres   "docker-entrypoint.s…"   5 hours ago   Up About an hour   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp my-postgresdb
 
 To exit the database command line, type \q and hit Enter.
 ## 4. Manage the Container
@@ -76,8 +93,10 @@ Verify the installed version:
 py -c "import psycopg2; print(psycopg2.__version__)"as
 ```
 
-To Step out of the local environment:
+If you wnat to Step out of the local environment
+(optional not necessary if not intalling anything outside your env):
 
 ```
 deactivate
 ```
+
