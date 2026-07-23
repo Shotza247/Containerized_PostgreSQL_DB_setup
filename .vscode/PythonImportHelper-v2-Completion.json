@@ -67,6 +67,30 @@
         "documentation": {}
     },
     {
+        "label": "get_postgres_version",
+        "importPath": "DBOps",
+        "description": "DBOps",
+        "isExtraImport": true,
+        "detail": "DBOps",
+        "documentation": {}
+    },
+    {
+        "label": "create_test_table",
+        "importPath": "DBOps",
+        "description": "DBOps",
+        "isExtraImport": true,
+        "detail": "DBOps",
+        "documentation": {}
+    },
+    {
+        "label": "insert_test_user",
+        "importPath": "DBOps",
+        "description": "DBOps",
+        "isExtraImport": true,
+        "detail": "DBOps",
+        "documentation": {}
+    },
+    {
         "label": "DB_CONFIG",
         "kind": 5,
         "importPath": "config",
@@ -76,11 +100,38 @@
         "documentation": {}
     },
     {
+        "label": "get_postgres_version",
+        "kind": 2,
+        "importPath": "DBOps",
+        "description": "DBOps",
+        "peekOfCode": "def get_postgres_version(connection):\n    cursor = connection.cursor()\n    cursor.execute(\"SELECT version();\")\n    version = cursor.fetchone()[0]\n    cursor.close()\n    return version\ndef create_test_table(connection):\n    cursor = connection.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS test_users (",
+        "detail": "DBOps",
+        "documentation": {}
+    },
+    {
+        "label": "create_test_table",
+        "kind": 2,
+        "importPath": "DBOps",
+        "description": "DBOps",
+        "peekOfCode": "def create_test_table(connection):\n    cursor = connection.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS test_users (\n            id SERIAL PRIMARY KEY,\n            name VARCHAR(50) NOT NULL\n        );\n    \"\"\")\n    connection.commit()\n    cursor.close()",
+        "detail": "DBOps",
+        "documentation": {}
+    },
+    {
+        "label": "insert_test_user",
+        "kind": 2,
+        "importPath": "DBOps",
+        "description": "DBOps",
+        "peekOfCode": "def insert_test_user(connection, name):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        INSERT INTO test_users(name)\n        VALUES (%s)\n        RETURNING id;\n        \"\"\",\n        (name,)\n    )",
+        "detail": "DBOps",
+        "documentation": {}
+    },
+    {
         "label": "connect",
         "kind": 2,
         "importPath": "DB_SetUp",
         "description": "DB_SetUp",
-        "peekOfCode": "def connect():\n    connection = None\n    cursor = None\n    try:\n        logger.info(\"Connecting to PostgreSQL...\")\n        connection = psycopg2.connect(**DB_CONFIG)\n        logger.info(\"Connection successful.\")\n        # Create a cursor\n        cursor = connection.cursor()\n        # Check PostgreSQL version",
+        "peekOfCode": "def connect():\n    connection = None\n    cursor = None\n    try:\n        logger.info(\"Connecting to PostgreSQL...\")\n        connection = psycopg2.connect(**DB_CONFIG)\n        logger.info(\"Connection successful.\")\n        return connection\n    except Exception:\n        logger.exception(\"Database operation failed.\")",
         "detail": "DB_SetUp",
         "documentation": {}
     },
@@ -94,11 +145,11 @@
         "documentation": {}
     },
     {
-        "label": "main",
-        "kind": 2,
+        "label": "connection",
+        "kind": 5,
         "importPath": "Postgres_SetUp",
         "description": "Postgres_SetUp",
-        "peekOfCode": "def main():\n    conn = None\n    try:\n        conn = connect()\n    finally:\n        if conn:\n            conn.close()\n            logger.info(\"Connection closed.\")\nif __name__ == \"__main__\":\n    main()",
+        "peekOfCode": "connection = None\ntry:\n    connection = connect()\n    version = get_postgres_version(connection)\n    logger.info(\"Connected to PostgreSQL: %s\", version)\n    create_test_table(connection)\n    logger.info(\"Table verified.\")\n    user_id = insert_test_user(connection, \"Alice\")\n    logger.info(\"Inserted user with ID: %s\", user_id)\nexcept Exception:",
         "detail": "Postgres_SetUp",
         "documentation": {}
     }
