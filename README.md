@@ -125,3 +125,11 @@ Drop the test_users table:
 ```
 drop table if exists test_users;
 ```
+
+After that i added a new file called DBOps:
+This will run our DB operations like getting the version creating tables, insert, updates, deletes, and many more.
+
+Rerun this:
+- py DB_SetUp.py
+- py DBOps.py
+- py Postgres_SetUp.py 
