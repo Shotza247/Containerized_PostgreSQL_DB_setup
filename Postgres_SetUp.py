@@ -1,4 +1,4 @@
-from utils.DB_SetUp import connect
+from DB_SetUp import connect
 from repository.inventory_repo import (
     get_postgres_version,
     create_item,
@@ -9,7 +9,7 @@ from repository.inventory_repo import (
     delete_item
 )
 
-from utils.logging_config import logger
+from logging_config import logger
 
 connection = None
 
