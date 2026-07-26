@@ -211,6 +211,22 @@
         "documentation": {}
     },
     {
+        "label": "update_item",
+        "importPath": "repository.inventory_repo",
+        "description": "repository.inventory_repo",
+        "isExtraImport": true,
+        "detail": "repository.inventory_repo",
+        "documentation": {}
+    },
+    {
+        "label": "delete_item",
+        "importPath": "repository.inventory_repo",
+        "description": "repository.inventory_repo",
+        "isExtraImport": true,
+        "detail": "repository.inventory_repo",
+        "documentation": {}
+    },
+    {
         "label": "_hx_AnonObject",
         "kind": 6,
         "importPath": ".venv.Scripts.daff",
@@ -2312,7 +2328,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def update_item(connection, item_id, sku, name, quantity, price):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        UPDATE Inventory\n        SET\n            sku = %s,\n            name = %s,\n            quantity = %s,\n            price = %s,",
+        "peekOfCode": "def update_item(connection, item_id, sku, name, quantity, price):\n    try:\n        with connection.cursor() as cursor:\n            cursor.execute(\n                \"\"\"\n                UPDATE Inventory\n                SET\n                    sku = %s,\n                    name = %s,\n                    quantity = %s,",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2321,7 +2337,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def delete_item(connection, item_id):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        DELETE FROM Inventory\n        WHERE id = %s;\n        \"\"\",\n        (item_id,)\n    )\n    connection.commit()",
+        "peekOfCode": "def delete_item(connection, item_id):\n    try:\n        with connection.cursor() as cursor:\n            cursor.execute(\n                \"\"\"\n                DELETE FROM Inventory\n                WHERE id = %s;\n                \"\"\",\n                (item_id,),\n            )",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
