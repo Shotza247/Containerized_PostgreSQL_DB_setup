@@ -137,43 +137,53 @@ def search_items(connection, keyword):
     return items
 
 def update_item(connection, item_id, sku, name, quantity, price):
-    cursor = connection.cursor()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """
+                UPDATE Inventory
+                SET
+                    sku = %s,
+                    name = %s,
+                    quantity = %s,
+                    price = %s,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s;
+                """,
+                (
+                    sku,
+                    name,
+                    quantity,
+                    price,
+                    item_id,
+                ),
+            )
 
-    cursor.execute(
-        """
-        UPDATE Inventory
-        SET
-            sku = %s,
-            name = %s,
-            quantity = %s,
-            price = %s,
-            updated_at = CURRENT_TIMESTAMP
-        WHERE id = %s;
-        """,
-        (
-            sku,
-            name,
-            quantity,
-            price,
-            item_id
-        )
-    )
+        rows_updated = cursor.rowcount
+        
+        connection.commit()
+        
+        return rows_updated > 0
 
-    connection.commit()
-
-    cursor.close()
+    except Exception:
+        connection.rollback()
+        raise
     
 def delete_item(connection, item_id):
-    cursor = connection.cursor()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """
+                DELETE FROM Inventory
+                WHERE id = %s;
+                """,
+                (item_id,),
+            )
 
-    cursor.execute(
-        """
-        DELETE FROM Inventory
-        WHERE id = %s;
-        """,
-        (item_id,)
-    )
+        rows_deleted = cursor.rowcount
+        connection.commit()
+        return rows_deleted > 0
 
-    connection.commit()
-
-    cursor.close()
+    except Exception:
+        connection.rollback()
+        raise
