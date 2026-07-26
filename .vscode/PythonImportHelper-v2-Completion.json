@@ -131,26 +131,26 @@
     },
     {
         "label": "DB_CONFIG",
-        "importPath": "utils.config",
-        "description": "utils.config",
+        "importPath": "config",
+        "description": "config",
         "isExtraImport": true,
-        "detail": "utils.config",
+        "detail": "config",
         "documentation": {}
     },
     {
         "label": "logger",
-        "importPath": "utils.logging_config",
-        "description": "utils.logging_config",
+        "importPath": "logging_config",
+        "description": "logging_config",
         "isExtraImport": true,
-        "detail": "utils.logging_config",
+        "detail": "logging_config",
         "documentation": {}
     },
     {
         "label": "logger",
-        "importPath": "utils.logging_config",
-        "description": "utils.logging_config",
+        "importPath": "logging_config",
+        "description": "logging_config",
         "isExtraImport": true,
-        "detail": "utils.logging_config",
+        "detail": "logging_config",
         "documentation": {}
     },
     {
@@ -164,10 +164,10 @@
     },
     {
         "label": "connect",
-        "importPath": "utils.DB_SetUp",
-        "description": "utils.DB_SetUp",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
         "isExtraImport": true,
-        "detail": "utils.DB_SetUp",
+        "detail": "DB_SetUp",
         "documentation": {}
     },
     {
@@ -2344,28 +2344,28 @@
     {
         "label": "DB_CONFIG",
         "kind": 5,
-        "importPath": "utils.config",
-        "description": "utils.config",
+        "importPath": "config",
+        "description": "config",
         "peekOfCode": "DB_CONFIG = {\n    \"host\": os.getenv(\"DB_HOST\"),\n    \"port\": os.getenv(\"DB_PORT\"),\n    \"database\": os.getenv(\"DB_NAME\"),\n    \"user\": os.getenv(\"DB_USER\"),\n    \"password\": os.getenv(\"DB_PASSWORD\"),\n}",
-        "detail": "utils.config",
+        "detail": "config",
         "documentation": {}
     },
     {
         "label": "connect",
         "kind": 2,
-        "importPath": "utils.DB_SetUp",
-        "description": "utils.DB_SetUp",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
         "peekOfCode": "def connect():\n    connection = None\n    cursor = None\n    try:\n        logger.info(\"Connecting to PostgreSQL...\")\n        connection = psycopg2.connect(**DB_CONFIG)\n        logger.info(\"Connection successful.\")\n        return connection\n    except Exception:\n        logger.exception(\"Database operation failed.\")",
-        "detail": "utils.DB_SetUp",
+        "detail": "DB_SetUp",
         "documentation": {}
     },
     {
         "label": "logger",
         "kind": 5,
-        "importPath": "utils.logging_config",
-        "description": "utils.logging_config",
+        "importPath": "logging_config",
+        "description": "logging_config",
         "peekOfCode": "logger = logging.getLogger(\"postgres\")",
-        "detail": "utils.logging_config",
+        "detail": "logging_config",
         "documentation": {}
     },
     {
