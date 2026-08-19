@@ -1,189 +1,174 @@
-def get_postgres_version(connection):
-    cursor = connection.cursor()
+from models.inventory import InventoryItem
 
-    cursor.execute("SELECT version();")
 
-    version = cursor.fetchone()[0]
+INVENTORY_COLUMNS = """
+    id,
+    sku,
+    name,
+    quantity,
+    price,
+    description,
+    created_at,
+    updated_at
+"""
 
-    cursor.close()
 
-    return version
+def get_postgres_version(connection) -> str:
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT version();")
+        return cursor.fetchone()[0]
 
-    
-def create_item(connection, sku, name, quantity, price):
-    cursor = connection.cursor()
 
-    cursor.execute(
-        """
-        INSERT INTO Inventory (
-            sku,
-            name,
-            quantity,
-            price
+def create_item(
+    connection,
+    sku: str,
+    name: str,
+    quantity: int,
+    price,
+    description: str | None = None,
+) -> int:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            INSERT INTO inventory (
+                sku,
+                name,
+                quantity,
+                price,
+                description
+            )
+            VALUES (%s, %s, %s, %s, %s)
+            RETURNING id;
+            """,
+            (sku, name, quantity, price, description),
         )
-        VALUES (%s, %s, %s, %s)
-        RETURNING id;
-        """,
-        (sku, name, quantity, price)
-    )
 
-    item_id = cursor.fetchone()[0]
+        return cursor.fetchone()[0]
 
-    connection.commit()
-    cursor.close()
 
-    return item_id
+def get_item_by_id(connection, item_id: int) -> InventoryItem | None:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            f"""
+            SELECT
+                {INVENTORY_COLUMNS}
+            FROM inventory
+            WHERE id = %s;
+            """,
+            (item_id,),
+        )
 
-def get_item_by_id(connection, item_id):
-    cursor = connection.cursor()
+        return InventoryItem.from_row(cursor.fetchone())
 
-    cursor.execute(
-        """
-        SELECT
-            id,
-            sku,
-            name,
-            quantity,
-            price,
-            created_at,
-            updated_at
-        FROM Inventory
-        WHERE id = %s;
-        """,
-        (item_id,)
-    )
 
-    item = cursor.fetchone()
+def get_item_by_sku(connection, sku: str) -> InventoryItem | None:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            f"""
+            SELECT
+                {INVENTORY_COLUMNS}
+            FROM inventory
+            WHERE sku = %s;
+            """,
+            (sku,),
+        )
 
-    cursor.close()
+        return InventoryItem.from_row(cursor.fetchone())
 
-    return item
 
-def get_item_by_sku(connection, sku):
-    cursor = connection.cursor()
+def list_items(connection) -> list[InventoryItem]:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            f"""
+            SELECT
+                {INVENTORY_COLUMNS}
+            FROM inventory
+            ORDER BY id;
+            """
+        )
 
-    cursor.execute(
-        """
-        SELECT
-            id,
-            sku,
-            name,
-            quantity,
-            price,
-            created_at,
-            updated_at
-        FROM Inventory
-        WHERE sku = %s;
-        """,
-        (sku,)
-    )
+        return [InventoryItem.from_row(row) for row in cursor.fetchall()]
 
-    item = cursor.fetchone()
 
-    cursor.close()
+def search_items(connection, keyword: str) -> list[InventoryItem]:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            f"""
+            SELECT
+                {INVENTORY_COLUMNS}
+            FROM inventory
+            WHERE
+                name ILIKE %s
+                OR sku ILIKE %s
+                OR description ILIKE %s
+            ORDER BY name;
+            """,
+            (f"%{keyword}%", f"%{keyword}%", f"%{keyword}%"),
+        )
 
-    return item
+        return [InventoryItem.from_row(row) for row in cursor.fetchall()]
 
-def list_items(connection):
-    cursor = connection.cursor()
 
-    cursor.execute(
-        """
-        SELECT
-            id,
-            sku,
-            name,
-            quantity,
-            price,
-            created_at,
-            updated_at
-        FROM Inventory
-        ORDER BY id;
-        """
-    )
+def update_item(
+    connection,
+    item_id: int,
+    sku: str,
+    name: str,
+    quantity: int,
+    price,
+    description: str | None = None,
+) -> bool:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            UPDATE inventory
+            SET
+                sku = %s,
+                name = %s,
+                quantity = %s,
+                price = %s,
+                description = %s,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = %s;
+            """,
+            (
+                sku,
+                name,
+                quantity,
+                price,
+                description,
+                item_id,
+            ),
+        )
 
-    items = cursor.fetchall()
+        return cursor.rowcount > 0
 
-    cursor.close()
 
-    return items
+def decrease_item_quantity(connection, item_id: int, quantity: int) -> bool:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            UPDATE inventory
+            SET
+                quantity = quantity - %s,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = %s
+              AND quantity >= %s;
+            """,
+            (quantity, item_id, quantity),
+        )
 
-def search_items(connection, keyword):
-    cursor = connection.cursor()
+        return cursor.rowcount > 0
 
-    cursor.execute(
-        """
-        SELECT
-            id,
-            sku,
-            name,
-            quantity,
-            price,
-            created_at,
-            updated_at
-        FROM Inventory
-        WHERE
-            name ILIKE %s
-            OR sku ILIKE %s
-        ORDER BY name;
-        """,
-        (f"%{keyword}%", f"%{keyword}%")
-    )
 
-    items = cursor.fetchall()
+def delete_item(connection, item_id: int) -> bool:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            DELETE FROM inventory
+            WHERE id = %s;
+            """,
+            (item_id,),
+        )
 
-    cursor.close()
-
-    return items
-
-def update_item(connection, item_id, sku, name, quantity, price):
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """
-                UPDATE Inventory
-                SET
-                    sku = %s,
-                    name = %s,
-                    quantity = %s,
-                    price = %s,
-                    updated_at = CURRENT_TIMESTAMP
-                WHERE id = %s;
-                """,
-                (
-                    sku,
-                    name,
-                    quantity,
-                    price,
-                    item_id,
-                ),
-            )
-
-        rows_updated = cursor.rowcount
-        
-        connection.commit()
-        
-        return rows_updated > 0
-
-    except Exception:
-        connection.rollback()
-        raise
-    
-def delete_item(connection, item_id):
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """
-                DELETE FROM Inventory
-                WHERE id = %s;
-                """,
-                (item_id,),
-            )
-
-        rows_deleted = cursor.rowcount
-        connection.commit()
-        return rows_deleted > 0
-
-    except Exception:
-        connection.rollback()
-        raise
+        return cursor.rowcount > 0

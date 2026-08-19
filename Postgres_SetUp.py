@@ -1,56 +1,54 @@
 import argparse
+from datetime import datetime
 
 from logging_config import logger
-from repository.inventory_repo import (
-    create_item,
-    delete_item,
-    get_item_by_id,
-    get_item_by_sku,
-    get_postgres_version,
-    list_items,
-    update_item,
-)
 
 
 def run_inventory_demo() -> None:
-    from DB_SetUp import PostgresDB
+    from services.inventory_service import InventoryService
+    from services.orders_service import OrderService
 
-    db = PostgresDB()
+    inventory_service = InventoryService()
+    order_service = OrderService()
+    demo_suffix = datetime.now().strftime("%Y%m%d%H%M%S")
+    sku = f"DEMO-{demo_suffix}"
+    order_number = f"ORD-DEMO-{demo_suffix}"
 
-    with db.connection() as connection:
-        version = get_postgres_version(connection)
-        logger.info("Connected to PostgreSQL: %s", version)
+    item = inventory_service.create_item(
+        sku=sku,
+        name="Demo Laptop",
+        quantity=5,
+        price=9999.99,
+        description="Created by the service-layer demo.",
+    )
+    logger.info("Created inventory item: %s", item)
 
-        item_id = create_item(
-            connection,
-            "SKU015",
-            "Laptop",
-            5,
-            9999.99,
-        )
-        logger.info("Inserted item ID: %s", item_id)
+    updated_item = inventory_service.update_item(
+        item_id=item.id,
+        sku=sku,
+        name="Demo Gaming Laptop",
+        quantity=10,
+        price=12999.99,
+        description="Updated by the service-layer demo.",
+    )
+    logger.info("Updated inventory item: %s", updated_item)
 
-        item = get_item_by_id(connection, item_id)
-        logger.info("Item by ID: %s", item)
+    order = order_service.place_order(
+        order_number=order_number,
+        sku=sku,
+        quantity_ordered=2,
+        status="paid",
+    )
+    logger.info("Created order: %s", order)
 
-        item = get_item_by_sku(connection, "SKU015")
-        logger.info("Item by SKU: %s", item)
+    orders = order_service.list_orders_with_inventory()
+    logger.info("Orders with inventory: %s", orders)
 
-        items = list_items(connection)
-        logger.info("Inventory items: %s", items)
+    order_deleted = order_service.delete_order(order_number)
+    logger.info("Deleted demo order: %s", order_deleted)
 
-        updated = update_item(
-            connection,
-            item_id,
-            "SKU015",
-            "Gaming Laptop",
-            25,
-            47000.00,
-        )
-        logger.info("Inventory updated: %s", updated)
-
-        deleted = delete_item(connection, item_id)
-        logger.info("Inventory deleted: %s", deleted)
+    item_deleted = inventory_service.delete_item(item.id)
+    logger.info("Deleted demo inventory item: %s", item_deleted)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -73,7 +71,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser("seed", help="Run seed SQL files in database/seed.")
     subparsers.add_parser("reset", help="Run dev reset SQL files in database/dev.")
-    subparsers.add_parser("demo", help="Run the inventory CRUD demo.")
+    subparsers.add_parser("demo", help="Run the sample inventory/order service flow.")
 
     return parser
 

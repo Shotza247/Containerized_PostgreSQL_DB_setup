@@ -105,11 +105,155 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "StringIO",
         "importPath": "io",
         "description": "io",
         "isExtraImport": true,
         "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryItem",
+        "importPath": "models.inventory",
+        "description": "models.inventory",
+        "isExtraImport": true,
+        "detail": "models.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryItem",
+        "importPath": "models.inventory",
+        "description": "models.inventory",
+        "isExtraImport": true,
+        "detail": "models.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "Order",
+        "importPath": "models.order",
+        "description": "models.order",
+        "isExtraImport": true,
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "OrderWithInventory",
+        "importPath": "models.order",
+        "description": "models.order",
+        "isExtraImport": true,
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "Order",
+        "importPath": "models.order",
+        "description": "models.order",
+        "isExtraImport": true,
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "OrderWithInventory",
+        "importPath": "models.order",
+        "description": "models.order",
+        "isExtraImport": true,
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "inventory_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
+        "documentation": {}
+    },
+    {
+        "label": "inventory_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
+        "documentation": {}
+    },
+    {
+        "label": "orders_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
         "documentation": {}
     },
     {
@@ -233,62 +377,6 @@
         "importPath": "argparse",
         "description": "argparse",
         "detail": "argparse",
-        "documentation": {}
-    },
-    {
-        "label": "create_item",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "delete_item",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "get_item_by_id",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "get_item_by_sku",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "get_postgres_version",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "list_items",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "update_item",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
         "documentation": {}
     },
     {
@@ -2335,11 +2423,38 @@
         "documentation": {}
     },
     {
+        "label": "InventoryItem",
+        "kind": 6,
+        "importPath": "models.inventory",
+        "description": "models.inventory",
+        "peekOfCode": "class InventoryItem:\n    id: int\n    sku: str\n    name: str\n    quantity: int\n    price: Decimal\n    description: str | None\n    created_at: datetime\n    updated_at: datetime\n    @classmethod",
+        "detail": "models.inventory",
+        "documentation": {}
+    },
+    {
+        "label": "Order",
+        "kind": 6,
+        "importPath": "models.order",
+        "description": "models.order",
+        "peekOfCode": "class Order:\n    id: int\n    order_number: str\n    inventory_id: int\n    quantity_ordered: int\n    unit_price: Decimal\n    status: str\n    created_at: datetime\n    updated_at: datetime\n    @property",
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "OrderWithInventory",
+        "kind": 6,
+        "importPath": "models.order",
+        "description": "models.order",
+        "peekOfCode": "class OrderWithInventory:\n    id: int\n    order_number: str\n    inventory_id: int\n    inventory_sku: str\n    inventory_name: str\n    quantity_ordered: int\n    unit_price: Decimal\n    status: str\n    created_at: datetime",
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
         "label": "get_postgres_version",
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def get_postgres_version(connection):\n    cursor = connection.cursor()\n    cursor.execute(\"SELECT version();\")\n    version = cursor.fetchone()[0]\n    cursor.close()\n    return version\ndef create_item(connection, sku, name, quantity, price):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"",
+        "peekOfCode": "def get_postgres_version(connection) -> str:\n    with connection.cursor() as cursor:\n        cursor.execute(\"SELECT version();\")\n        return cursor.fetchone()[0]\ndef create_item(\n    connection,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2348,7 +2463,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def create_item(connection, sku, name, quantity, price):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        INSERT INTO Inventory (\n            sku,\n            name,\n            quantity,\n            price\n        )",
+        "peekOfCode": "def create_item(\n    connection,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,\n    description: str | None = None,\n) -> int:\n    with connection.cursor() as cursor:\n        cursor.execute(",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2357,7 +2472,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def get_item_by_id(connection, item_id):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        SELECT\n            id,\n            sku,\n            name,\n            quantity,\n            price,",
+        "peekOfCode": "def get_item_by_id(connection, item_id: int) -> InventoryItem | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {INVENTORY_COLUMNS}\n            FROM inventory\n            WHERE id = %s;\n            \"\"\",\n            (item_id,),",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2366,7 +2481,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def get_item_by_sku(connection, sku):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        SELECT\n            id,\n            sku,\n            name,\n            quantity,\n            price,",
+        "peekOfCode": "def get_item_by_sku(connection, sku: str) -> InventoryItem | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {INVENTORY_COLUMNS}\n            FROM inventory\n            WHERE sku = %s;\n            \"\"\",\n            (sku,),",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2375,7 +2490,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def list_items(connection):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        SELECT\n            id,\n            sku,\n            name,\n            quantity,\n            price,",
+        "peekOfCode": "def list_items(connection) -> list[InventoryItem]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {INVENTORY_COLUMNS}\n            FROM inventory\n            ORDER BY id;\n            \"\"\"\n        )",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2384,7 +2499,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def search_items(connection, keyword):\n    cursor = connection.cursor()\n    cursor.execute(\n        \"\"\"\n        SELECT\n            id,\n            sku,\n            name,\n            quantity,\n            price,",
+        "peekOfCode": "def search_items(connection, keyword: str) -> list[InventoryItem]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {INVENTORY_COLUMNS}\n            FROM inventory\n            WHERE\n                name ILIKE %s\n                OR sku ILIKE %s",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2393,7 +2508,16 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def update_item(connection, item_id, sku, name, quantity, price):\n    try:\n        with connection.cursor() as cursor:\n            cursor.execute(\n                \"\"\"\n                UPDATE Inventory\n                SET\n                    sku = %s,\n                    name = %s,\n                    quantity = %s,",
+        "peekOfCode": "def update_item(\n    connection,\n    item_id: int,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,\n    description: str | None = None,\n) -> bool:\n    with connection.cursor() as cursor:",
+        "detail": "repository.inventory_repo",
+        "documentation": {}
+    },
+    {
+        "label": "decrease_item_quantity",
+        "kind": 2,
+        "importPath": "repository.inventory_repo",
+        "description": "repository.inventory_repo",
+        "peekOfCode": "def decrease_item_quantity(connection, item_id: int, quantity: int) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            UPDATE inventory\n            SET\n                quantity = quantity - %s,\n                updated_at = CURRENT_TIMESTAMP\n            WHERE id = %s\n              AND quantity >= %s;",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2402,8 +2526,107 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def delete_item(connection, item_id):\n    try:\n        with connection.cursor() as cursor:\n            cursor.execute(\n                \"\"\"\n                DELETE FROM Inventory\n                WHERE id = %s;\n                \"\"\",\n                (item_id,),\n            )",
+        "peekOfCode": "def delete_item(connection, item_id: int) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            DELETE FROM inventory\n            WHERE id = %s;\n            \"\"\",\n            (item_id,),\n        )\n        return cursor.rowcount > 0",
         "detail": "repository.inventory_repo",
+        "documentation": {}
+    },
+    {
+        "label": "INVENTORY_COLUMNS",
+        "kind": 5,
+        "importPath": "repository.inventory_repo",
+        "description": "repository.inventory_repo",
+        "peekOfCode": "INVENTORY_COLUMNS = \"\"\"\n    id,\n    sku,\n    name,\n    quantity,\n    price,\n    description,\n    created_at,\n    updated_at\n\"\"\"",
+        "detail": "repository.inventory_repo",
+        "documentation": {}
+    },
+    {
+        "label": "create_order",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def create_order(\n    connection,\n    order_number: str,\n    inventory_id: int,\n    quantity_ordered: int,\n    unit_price,\n    status: str = \"pending\",\n) -> int:\n    with connection.cursor() as cursor:\n        cursor.execute(",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "get_order_by_id",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def get_order_by_id(connection, order_id: int) -> Order | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {ORDER_COLUMNS}\n            FROM orders\n            WHERE id = %s;\n            \"\"\",\n            (order_id,),",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "get_order_by_number",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def get_order_by_number(connection, order_number: str) -> Order | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {ORDER_COLUMNS}\n            FROM orders\n            WHERE order_number = %s;\n            \"\"\",\n            (order_number,),",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "list_orders",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def list_orders(connection) -> list[Order]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {ORDER_COLUMNS}\n            FROM orders\n            ORDER BY id;\n            \"\"\"\n        )",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "list_orders_with_inventory",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def list_orders_with_inventory(connection) -> list[OrderWithInventory]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            SELECT\n                orders.id,\n                orders.order_number,\n                orders.inventory_id,\n                inventory.sku,\n                inventory.name,",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "update_order_status",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def update_order_status(connection, order_number: str, status: str) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            UPDATE orders\n            SET\n                status = %s,\n                updated_at = CURRENT_TIMESTAMP\n            WHERE order_number = %s;\n            \"\"\",",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "delete_order",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def delete_order(connection, order_number: str) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            DELETE FROM orders\n            WHERE order_number = %s;\n            \"\"\",\n            (order_number,),\n        )\n        return cursor.rowcount > 0",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "ORDER_COLUMNS",
+        "kind": 5,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "ORDER_COLUMNS = \"\"\"\n    id,\n    order_number,\n    inventory_id,\n    quantity_ordered,\n    unit_price,\n    status,\n    created_at,\n    updated_at\n\"\"\"",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryService",
+        "kind": 6,
+        "importPath": "services.inventory_service",
+        "description": "services.inventory_service",
+        "peekOfCode": "class InventoryService:\n    def __init__(self, db: PostgresDB | None = None) -> None:\n        self.db = db or PostgresDB()\n    def create_item(\n        self,\n        sku: str,\n        name: str,\n        quantity: int,\n        price,\n        description: str | None = None,",
+        "detail": "services.inventory_service",
+        "documentation": {}
+    },
+    {
+        "label": "OrderService",
+        "kind": 6,
+        "importPath": "services.orders_service",
+        "description": "services.orders_service",
+        "peekOfCode": "class OrderService:\n    def __init__(self, db: PostgresDB | None = None) -> None:\n        self.db = db or PostgresDB()\n    def place_order(\n        self,\n        order_number: str,\n        sku: str,\n        quantity_ordered: int,\n        status: str = \"pending\",\n    ) -> Order:",
+        "detail": "services.orders_service",
         "documentation": {}
     },
     {
@@ -2528,7 +2751,7 @@
         "kind": 2,
         "importPath": "Postgres_SetUp",
         "description": "Postgres_SetUp",
-        "peekOfCode": "def run_inventory_demo() -> None:\n    from DB_SetUp import PostgresDB\n    db = PostgresDB()\n    with db.connection() as connection:\n        version = get_postgres_version(connection)\n        logger.info(\"Connected to PostgreSQL: %s\", version)\n        item_id = create_item(\n            connection,\n            \"SKU015\",\n            \"Laptop\",",
+        "peekOfCode": "def run_inventory_demo() -> None:\n    from services.inventory_service import InventoryService\n    from services.orders_service import OrderService\n    inventory_service = InventoryService()\n    order_service = OrderService()\n    demo_suffix = datetime.now().strftime(\"%Y%m%d%H%M%S\")\n    sku = f\"DEMO-{demo_suffix}\"\n    order_number = f\"ORD-DEMO-{demo_suffix}\"\n    item = inventory_service.create_item(\n        sku=sku,",
         "detail": "Postgres_SetUp",
         "documentation": {}
     },
