@@ -113,11 +113,43 @@
         "documentation": {}
     },
     {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
         "isExtraImport": true,
         "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "contextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -130,7 +162,39 @@
         "documentation": {}
     },
     {
+        "label": "connection",
+        "importPath": "psycopg2.extensions",
+        "description": "psycopg2.extensions",
+        "isExtraImport": true,
+        "detail": "psycopg2.extensions",
+        "documentation": {}
+    },
+    {
         "label": "DB_CONFIG",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "SCHEMA_DIR",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "SEED_DIR",
+        "importPath": "config",
+        "description": "config",
+        "isExtraImport": true,
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "validate_db_config",
         "importPath": "config",
         "description": "config",
         "isExtraImport": true,
@@ -163,15 +227,16 @@
         "documentation": {}
     },
     {
-        "label": "connect",
-        "importPath": "DB_SetUp",
-        "description": "DB_SetUp",
+        "label": "argparse",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "DB_SetUp",
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
         "documentation": {}
     },
     {
-        "label": "get_postgres_version",
+        "label": "create_item",
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
         "isExtraImport": true,
@@ -179,7 +244,7 @@
         "documentation": {}
     },
     {
-        "label": "create_item",
+        "label": "delete_item",
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
         "isExtraImport": true,
@@ -203,6 +268,14 @@
         "documentation": {}
     },
     {
+        "label": "get_postgres_version",
+        "importPath": "repository.inventory_repo",
+        "description": "repository.inventory_repo",
+        "isExtraImport": true,
+        "detail": "repository.inventory_repo",
+        "documentation": {}
+    },
+    {
         "label": "list_items",
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
@@ -212,14 +285,6 @@
     },
     {
         "label": "update_item",
-        "importPath": "repository.inventory_repo",
-        "description": "repository.inventory_repo",
-        "isExtraImport": true,
-        "detail": "repository.inventory_repo",
-        "documentation": {}
-    },
-    {
-        "label": "delete_item",
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
         "isExtraImport": true,
@@ -2342,12 +2407,75 @@
         "documentation": {}
     },
     {
+        "label": "validate_db_config",
+        "kind": 2,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "def validate_db_config(db_config: dict) -> None:\n    missing = [key for key, value in db_config.items() if value in (None, \"\")]\n    if missing:\n        names = \", \".join(missing)\n        raise ValueError(f\"Missing database config value(s): {names}\")",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent\nDATABASE_DIR = BASE_DIR / \"database\"\nSCHEMA_DIR = DATABASE_DIR / \"schema\"\nSEED_DIR = DATABASE_DIR / \"seed\"\nDEV_DIR = DATABASE_DIR / \"dev\"\nload_dotenv(BASE_DIR / \".env\")\ndef _get_port() -> int:\n    value = os.getenv(\"DB_PORT\", \"5432\")\n    try:\n        return int(value)",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_DIR",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DATABASE_DIR = BASE_DIR / \"database\"\nSCHEMA_DIR = DATABASE_DIR / \"schema\"\nSEED_DIR = DATABASE_DIR / \"seed\"\nDEV_DIR = DATABASE_DIR / \"dev\"\nload_dotenv(BASE_DIR / \".env\")\ndef _get_port() -> int:\n    value = os.getenv(\"DB_PORT\", \"5432\")\n    try:\n        return int(value)\n    except ValueError as exc:",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "SCHEMA_DIR",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "SCHEMA_DIR = DATABASE_DIR / \"schema\"\nSEED_DIR = DATABASE_DIR / \"seed\"\nDEV_DIR = DATABASE_DIR / \"dev\"\nload_dotenv(BASE_DIR / \".env\")\ndef _get_port() -> int:\n    value = os.getenv(\"DB_PORT\", \"5432\")\n    try:\n        return int(value)\n    except ValueError as exc:\n        raise ValueError(\"DB_PORT must be a number.\") from exc",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "SEED_DIR",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "SEED_DIR = DATABASE_DIR / \"seed\"\nDEV_DIR = DATABASE_DIR / \"dev\"\nload_dotenv(BASE_DIR / \".env\")\ndef _get_port() -> int:\n    value = os.getenv(\"DB_PORT\", \"5432\")\n    try:\n        return int(value)\n    except ValueError as exc:\n        raise ValueError(\"DB_PORT must be a number.\") from exc\nDB_CONFIG = {",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "DEV_DIR",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DEV_DIR = DATABASE_DIR / \"dev\"\nload_dotenv(BASE_DIR / \".env\")\ndef _get_port() -> int:\n    value = os.getenv(\"DB_PORT\", \"5432\")\n    try:\n        return int(value)\n    except ValueError as exc:\n        raise ValueError(\"DB_PORT must be a number.\") from exc\nDB_CONFIG = {\n    \"host\": os.getenv(\"DB_HOST\", \"localhost\"),",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
         "label": "DB_CONFIG",
         "kind": 5,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "DB_CONFIG = {\n    \"host\": os.getenv(\"DB_HOST\"),\n    \"port\": os.getenv(\"DB_PORT\"),\n    \"database\": os.getenv(\"DB_NAME\"),\n    \"user\": os.getenv(\"DB_USER\"),\n    \"password\": os.getenv(\"DB_PASSWORD\"),\n}",
+        "peekOfCode": "DB_CONFIG = {\n    \"host\": os.getenv(\"DB_HOST\", \"localhost\"),\n    \"port\": _get_port(),\n    \"database\": os.getenv(\"DB_NAME\", \"postgres\"),\n    \"user\": os.getenv(\"DB_USER\", \"postgres\"),\n    \"password\": os.getenv(\"DB_PASSWORD\"),\n}\ndef validate_db_config(db_config: dict) -> None:\n    missing = [key for key, value in db_config.items() if value in (None, \"\")]\n    if missing:",
         "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "kind": 6,
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "peekOfCode": "class PostgresDB:\n    \"\"\"Small reusable wrapper for PostgreSQL connections and setup scripts.\"\"\"\n    def __init__(self, db_config: dict | None = None) -> None:\n        self.db_config = db_config or DB_CONFIG\n    def connect(self) -> PsycopgConnection:\n        validate_db_config(self.db_config)\n        logger.info(\n            \"Connecting to PostgreSQL at %s:%s/%s\",\n            self.db_config[\"host\"],\n            self.db_config[\"port\"],",
+        "detail": "DB_SetUp",
         "documentation": {}
     },
     {
@@ -2355,7 +2483,34 @@
         "kind": 2,
         "importPath": "DB_SetUp",
         "description": "DB_SetUp",
-        "peekOfCode": "def connect():\n    connection = None\n    cursor = None\n    try:\n        logger.info(\"Connecting to PostgreSQL...\")\n        connection = psycopg2.connect(**DB_CONFIG)\n        logger.info(\"Connection successful.\")\n        return connection\n    except Exception:\n        logger.exception(\"Database operation failed.\")",
+        "peekOfCode": "def connect(db_config: dict | None = None) -> PsycopgConnection:\n    \"\"\"Backward-compatible raw connection helper for existing repositories.\"\"\"\n    return PostgresDB(db_config).connect()\n@contextmanager\ndef get_connection(db_config: dict | None = None) -> Iterable[PsycopgConnection]:\n    \"\"\"Context-managed connection that commits or rolls back automatically.\"\"\"\n    with PostgresDB(db_config).connection() as connection:\n        yield connection\ndef check_connection(db_config: dict | None = None) -> str:\n    return PostgresDB(db_config).check_connection()",
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "kind": 2,
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "peekOfCode": "def get_connection(db_config: dict | None = None) -> Iterable[PsycopgConnection]:\n    \"\"\"Context-managed connection that commits or rolls back automatically.\"\"\"\n    with PostgresDB(db_config).connection() as connection:\n        yield connection\ndef check_connection(db_config: dict | None = None) -> str:\n    return PostgresDB(db_config).check_connection()\ndef initialize_database(\n    schema_dir: str | Path = SCHEMA_DIR,\n    seed_dir: str | Path = SEED_DIR,\n    with_seed: bool = False,",
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "check_connection",
+        "kind": 2,
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "peekOfCode": "def check_connection(db_config: dict | None = None) -> str:\n    return PostgresDB(db_config).check_connection()\ndef initialize_database(\n    schema_dir: str | Path = SCHEMA_DIR,\n    seed_dir: str | Path = SEED_DIR,\n    with_seed: bool = False,\n    db_config: dict | None = None,\n) -> None:\n    db = PostgresDB(db_config)\n    db.init_schema(schema_dir)",
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_database",
+        "kind": 2,
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "peekOfCode": "def initialize_database(\n    schema_dir: str | Path = SCHEMA_DIR,\n    seed_dir: str | Path = SEED_DIR,\n    with_seed: bool = False,\n    db_config: dict | None = None,\n) -> None:\n    db = PostgresDB(db_config)\n    db.init_schema(schema_dir)\n    if with_seed:\n        db.seed(seed_dir)",
         "detail": "DB_SetUp",
         "documentation": {}
     },
@@ -2369,11 +2524,29 @@
         "documentation": {}
     },
     {
-        "label": "connection",
-        "kind": 5,
+        "label": "run_inventory_demo",
+        "kind": 2,
         "importPath": "Postgres_SetUp",
         "description": "Postgres_SetUp",
-        "peekOfCode": "connection = None\ntry:\n    connection = connect()\n    version = get_postgres_version(connection)\n    logger.info(\"Connected to PostgreSQL: %s\", version)\n    #Verify the postgres version\n    version = get_postgres_version(connection)\n    logger.info(version)\n    #Create a new item in the inventory\n    item_id = create_item(",
+        "peekOfCode": "def run_inventory_demo() -> None:\n    from DB_SetUp import PostgresDB\n    db = PostgresDB()\n    with db.connection() as connection:\n        version = get_postgres_version(connection)\n        logger.info(\"Connected to PostgreSQL: %s\", version)\n        item_id = create_item(\n            connection,\n            \"SKU015\",\n            \"Laptop\",",
+        "detail": "Postgres_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "build_parser",
+        "kind": 2,
+        "importPath": "Postgres_SetUp",
+        "description": "Postgres_SetUp",
+        "peekOfCode": "def build_parser() -> argparse.ArgumentParser:\n    parser = argparse.ArgumentParser(\n        description=\"Reusable PostgreSQL setup utility.\",\n    )\n    subparsers = parser.add_subparsers(dest=\"command\", required=True)\n    subparsers.add_parser(\"check\", help=\"Verify that the database is reachable.\")\n    init_parser = subparsers.add_parser(\n        \"init\",\n        help=\"Run schema SQL files in database/schema.\",\n    )",
+        "detail": "Postgres_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "Postgres_SetUp",
+        "description": "Postgres_SetUp",
+        "peekOfCode": "def main() -> None:\n    parser = build_parser()\n    args = parser.parse_args()\n    from DB_SetUp import PostgresDB, check_connection, initialize_database\n    from config import DEV_DIR, SCHEMA_DIR, SEED_DIR\n    db = PostgresDB()\n    if args.command == \"check\":\n        check_connection()\n    elif args.command == \"init\":\n        initialize_database(SCHEMA_DIR, SEED_DIR, with_seed=args.with_seed)",
         "detail": "Postgres_SetUp",
         "documentation": {}
     }

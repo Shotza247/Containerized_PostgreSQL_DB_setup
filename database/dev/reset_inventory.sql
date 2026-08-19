@@ -1,1 +1,1 @@
-drop table if exists test_users;
+DROP TABLE IF EXISTS inventory;

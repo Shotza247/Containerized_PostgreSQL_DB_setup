@@ -1,138 +1,151 @@
-To run PostgreSQL inside a Docker container instead of installing it directly onto your operating system, follow these steps.
+# Reusable PostgreSQL Setup
 
-## 1. Run the PostgreSQL Container
-Open your terminal and run the following command. This will automatically pull the official image and start the database:
+This project gives you a small PostgreSQL setup you can run locally or embed in
+another Python codebase.
 
-docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+## What is included
 
-## 2. Breakdown of the Command
+- `docker-compose.yml` starts a local PostgreSQL container.
+- `.env.example` shows the database environment variables the app expects.
+- `config.py` loads and validates database settings.
+- `DB_SetUp.py` exposes reusable connection and setup helpers.
+- `Postgres_SetUp.py` provides a command-line interface for common setup tasks.
+- `database/schema/*.sql` contains schema files, run in filename order.
+- `database/seed/*.sql` contains seed files, run in filename order.
+- `database/dev/*.sql` contains local-only reset scripts.
 
-* --name my-postgres: Names your container my-postgres so it is easy to reference later.
-* -e POSTGRES_PASSWORD=mysecretpassword: Sets your mandatory database password. Change mysecretpassword to whatever you prefer.
-* -p 5432:5432: Maps port 5432 from inside the container to port 5432 on your local machine.
-* -d: Runs the container in the background (detached mode).
-* postgres: Uses the latest official PostgreSQL image from Docker Hub.
+## Quick Start
 
-## 3. Connect to Your Database
-To connect to the database command line (psql) inside your running container, run:
+Create your local environment file:
 
-```
-docker exec -it my-postgres psql -U postgres
-```
-
-Learn more at https://docs.docker.com/go/debug-cli/ then:
-
-```
-docker debug my-postgres
-```
-postgresdb container logs:
-
-```
-docker logs my-postgresdb 
+```powershell
+Copy-Item .env.example .env
 ```
 
-check container is up on docker.
-```
-docker ps   
-```
+Edit `.env` and set a real password.
 
-output:
-CONTAINER ID   IMAGE      COMMAND                 CREATED       STATUS            PORTS                        NAMES
-aa0ac00822ce   postgres   "docker-entrypoint.s…"   5 hours ago   Up About an hour   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp my-postgresdb
+Create and activate a virtual environment:
 
-To exit the database command line, type \q and hit Enter.
-## 4. Manage the Container
-
-* Stop the database: docker stop my-postgres
-* Start it again: docker start my-postgres
-* Check if it is running: docker ps [7, 8] 
-
-Would you like help setting up a persistent storage folder so your data isn't lost if the container is deleted, or would you like a Docker Compose file to manage it alongside a management tool like pgAdmin?
-
-# set up a local environment for our dependencies and liabraries:
-py -m venv .venv  
-
-## Option 1: Temporarily allow scripts (recommended):
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
+```powershell
+py -m venv .venv
 .\.venv\Scripts\Activate.ps1
-
-## Option 2: Bypass the policy for just this PowerShell session
-If you don't want to change your execution policy permanently:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
-- Then:
-
-```
-.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 ```
 
-## Then install the PostgreSQL driver:
-- Your requirements.txt will look something like:
+Start PostgreSQL:
 
-```
-psycopg2-binary==2.9.x
-```
-
-or, if using psycopg 3:
-
-```
--> psycopg[binary]==3.x.x
+```powershell
+docker compose up -d
 ```
 
-or run:
+Check the database connection:
 
-```
-pip freeze > requirements.txt
-```
-
-or
-
-```
-pip install -r requirements.txt 
+```powershell
+py Postgres_SetUp.py check
 ```
 
-Verify the installed version:
+Create the schema:
 
-```
-py -c "import psycopg2; print(psycopg2.__version__)"as
-```
-
-If you wnat to Step out of the local environment
-(optional not necessary if not intalling anything outside your env):
-
-```
-deactivate
+```powershell
+py Postgres_SetUp.py init
 ```
 
-Run these:
+Create the schema and seed data:
 
-```
-1. py config.py   
-2. py logging_config.py 
-3. py DB_SetUp.py  
-4. py Postgres_SetUp.py 
+```powershell
+py Postgres_SetUp.py init --with-seed
 ```
 
-Run the select statement
+Run only seed scripts:
 
-```
-5. select * from test_users;
-```
-
-Drop the test_users table:
-
-```
-drop table if exists test_users;
+```powershell
+py Postgres_SetUp.py seed
 ```
 
-After that i added a new file called DBOps:
-This will run our DB operations like getting the version creating tables, insert, updates, deletes, and many more.
+Run the example inventory CRUD flow:
 
-Rerun this:
-- py DB_SetUp.py
-- py DBOps.py
-- py Postgres_SetUp.py 
+```powershell
+py Postgres_SetUp.py demo
+```
 
-with everything updated, we rerun:
-py Postgres_SetUp.py
+Reset the local inventory table:
+
+```powershell
+py Postgres_SetUp.py reset
+```
+
+## Embed In Another Codebase
+
+Copy these pieces into the target project:
+
+- `DB_SetUp.py`
+- `config.py`
+- `logging_config.py`
+- `database/`
+- `.env.example`
+- the dependencies from `requirements.txt`
+
+Then use the connection helper:
+
+```python
+from DB_SetUp import get_connection
+
+
+with get_connection() as connection:
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT version();")
+        print(cursor.fetchone()[0])
+```
+
+Or initialize the database from application startup or a deployment script:
+
+```python
+from DB_SetUp import initialize_database
+
+
+initialize_database(with_seed=True)
+```
+
+For code that wants to manage commits manually, use the raw connection helper:
+
+```python
+from DB_SetUp import connect
+
+
+connection = connect()
+try:
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT 1;")
+    connection.commit()
+finally:
+    connection.close()
+```
+
+## Add Your Own Tables
+
+Add schema files to `database/schema` with numeric prefixes:
+
+```text
+001_create_inventory_table.sql
+002_create_customers_table.sql
+003_create_orders_table.sql
+```
+
+Add repeatable seed scripts to `database/seed`. Prefer `ON CONFLICT` in seed
+files so they can run safely more than once.
+
+## Useful Docker Commands
+
+```powershell
+docker compose ps
+docker compose logs postgres
+docker compose stop
+docker compose start
+docker compose down
+```
+
+To remove the database volume and all local data:
+
+```powershell
+docker compose down -v
+```
