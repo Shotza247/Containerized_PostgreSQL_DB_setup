@@ -1,6 +1,6 @@
 from DB_SetUp import PostgresDB
-from models.order import Order, OrderWithInventory
-from repository import inventory_repo, orders_repo
+from models.order import Order, OrderWithDetails, OrderWithInventory
+from repository import customers_repo, inventory_repo, orders_repo
 
 
 class OrderService:
@@ -10,12 +10,15 @@ class OrderService:
     def place_order(
         self,
         order_number: str,
+        customer_code: str,
         sku: str,
         quantity_ordered: int,
         status: str = "pending",
     ) -> Order:
         if not order_number.strip():
             raise ValueError("Order number is required.")
+        if not customer_code.strip():
+            raise ValueError("Customer code is required.")
         if quantity_ordered <= 0:
             raise ValueError("Order quantity must be greater than zero.")
 
@@ -23,6 +26,10 @@ class OrderService:
             existing_order = orders_repo.get_order_by_number(connection, order_number)
             if existing_order:
                 raise ValueError(f"Order already exists: {order_number}")
+
+            customer = customers_repo.get_customer_by_code(connection, customer_code)
+            if customer is None:
+                raise ValueError(f"Customer not found for code: {customer_code}")
 
             item = inventory_repo.get_item_by_sku(connection, sku)
             if item is None:
@@ -37,6 +44,7 @@ class OrderService:
             order_id = orders_repo.create_order(
                 connection,
                 order_number,
+                customer.id,
                 item.id,
                 quantity_ordered,
                 item.price,
@@ -72,6 +80,10 @@ class OrderService:
     def list_orders_with_inventory(self) -> list[OrderWithInventory]:
         with self.db.connection() as connection:
             return orders_repo.list_orders_with_inventory(connection)
+
+    def list_orders_with_details(self) -> list[OrderWithDetails]:
+        with self.db.connection() as connection:
+            return orders_repo.list_orders_with_details(connection)
 
     def update_status(self, order_number: str, status: str) -> bool:
         if not status.strip():

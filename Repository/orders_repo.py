@@ -1,9 +1,10 @@
-from models.order import Order, OrderWithInventory
+from models.order import Order, OrderWithDetails, OrderWithInventory
 
 
 ORDER_COLUMNS = """
     id,
     order_number,
+    customer_id,
     inventory_id,
     quantity_ordered,
     unit_price,
@@ -16,6 +17,7 @@ ORDER_COLUMNS = """
 def create_order(
     connection,
     order_number: str,
+    customer_id: int | None,
     inventory_id: int,
     quantity_ordered: int,
     unit_price,
@@ -26,16 +28,18 @@ def create_order(
             """
             INSERT INTO orders (
                 order_number,
+                customer_id,
                 inventory_id,
                 quantity_ordered,
                 unit_price,
                 status
             )
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s)
             RETURNING id;
             """,
             (
                 order_number,
+                customer_id,
                 inventory_id,
                 quantity_ordered,
                 unit_price,
@@ -112,6 +116,34 @@ def list_orders_with_inventory(connection) -> list[OrderWithInventory]:
         )
 
         return [OrderWithInventory.from_row(row) for row in cursor.fetchall()]
+
+
+def list_orders_with_details(connection) -> list[OrderWithDetails]:
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            SELECT
+                orders.id,
+                orders.order_number,
+                orders.customer_id,
+                customers.customer_code,
+                customers.first_name || ' ' || customers.last_name AS customer_name,
+                orders.inventory_id,
+                inventory.sku,
+                inventory.name,
+                orders.quantity_ordered,
+                orders.unit_price,
+                orders.status,
+                orders.created_at,
+                orders.updated_at
+            FROM orders
+            JOIN inventory ON inventory.id = orders.inventory_id
+            LEFT JOIN customers ON customers.id = orders.customer_id
+            ORDER BY orders.order_number;
+            """
+        )
+
+        return [OrderWithDetails.from_row(row) for row in cursor.fetchall()]
 
 
 def update_order_status(connection, order_number: str, status: str) -> bool:

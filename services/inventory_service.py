@@ -1,6 +1,6 @@
 from DB_SetUp import PostgresDB
 from models.inventory import InventoryItem
-from repository import inventory_repo
+from repository import inventory_repo, vendors_repo
 
 
 class InventoryService:
@@ -14,10 +14,12 @@ class InventoryService:
         quantity: int,
         price,
         description: str | None = None,
+        vendor_code: str | None = None,
     ) -> InventoryItem:
         self._validate_item(sku, name, quantity, price)
 
         with self.db.connection() as connection:
+            vendor_id = self._get_vendor_id(connection, vendor_code)
             item_id = inventory_repo.create_item(
                 connection,
                 sku,
@@ -25,8 +27,11 @@ class InventoryService:
                 quantity,
                 price,
                 description,
+                vendor_id,
             )
             item = inventory_repo.get_item_by_id(connection, item_id)
+            if item is None:
+                raise RuntimeError(f"Item was created but could not be loaded: {item_id}")
 
         return item
 
@@ -54,10 +59,12 @@ class InventoryService:
         quantity: int,
         price,
         description: str | None = None,
+        vendor_code: str | None = None,
     ) -> InventoryItem | None:
         self._validate_item(sku, name, quantity, price)
 
         with self.db.connection() as connection:
+            vendor_id = self._get_vendor_id(connection, vendor_code)
             updated = inventory_repo.update_item(
                 connection,
                 item_id,
@@ -66,6 +73,7 @@ class InventoryService:
                 quantity,
                 price,
                 description,
+                vendor_id,
             )
             if not updated:
                 return None
@@ -85,3 +93,13 @@ class InventoryService:
             raise ValueError("Quantity cannot be negative.")
         if price < 0:
             raise ValueError("Price cannot be negative.")
+
+    def _get_vendor_id(self, connection, vendor_code: str | None) -> int | None:
+        if vendor_code is None:
+            return None
+
+        vendor = vendors_repo.get_vendor_by_code(connection, vendor_code)
+        if vendor is None:
+            raise ValueError(f"Vendor not found for code: {vendor_code}")
+
+        return vendor.id

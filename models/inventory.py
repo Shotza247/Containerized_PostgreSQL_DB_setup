@@ -11,6 +11,7 @@ class InventoryItem:
     quantity: int
     price: Decimal
     description: str | None
+    vendor_id: int | None
     created_at: datetime
     updated_at: datetime
 
@@ -26,6 +27,7 @@ class InventoryItem:
             quantity=row[3],
             price=row[4],
             description=row[5],
-            created_at=row[6],
-            updated_at=row[7],
+            vendor_id=row[6],
+            created_at=row[7],
+            updated_at=row[8],
         )

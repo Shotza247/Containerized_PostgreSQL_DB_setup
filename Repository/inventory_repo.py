@@ -8,6 +8,7 @@ INVENTORY_COLUMNS = """
     quantity,
     price,
     description,
+    vendor_id,
     created_at,
     updated_at
 """
@@ -26,6 +27,7 @@ def create_item(
     quantity: int,
     price,
     description: str | None = None,
+    vendor_id: int | None = None,
 ) -> int:
     with connection.cursor() as cursor:
         cursor.execute(
@@ -35,12 +37,13 @@ def create_item(
                 name,
                 quantity,
                 price,
-                description
+                description,
+                vendor_id
             )
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s)
             RETURNING id;
             """,
-            (sku, name, quantity, price, description),
+            (sku, name, quantity, price, description, vendor_id),
         )
 
         return cursor.fetchone()[0]
@@ -117,6 +120,7 @@ def update_item(
     quantity: int,
     price,
     description: str | None = None,
+    vendor_id: int | None = None,
 ) -> bool:
     with connection.cursor() as cursor:
         cursor.execute(
@@ -128,6 +132,7 @@ def update_item(
                 quantity = %s,
                 price = %s,
                 description = %s,
+                vendor_id = %s,
                 updated_at = CURRENT_TIMESTAMP
             WHERE id = %s;
             """,
@@ -137,6 +142,7 @@ def update_item(
                 quantity,
                 price,
                 description,
+                vendor_id,
                 item_id,
             ),
         )
