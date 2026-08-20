@@ -3,7 +3,8 @@ INSERT INTO inventory (
     name,
     quantity,
     price,
-    description
+    description,
+    vendor_id
 )
 SELECT
     'SKU' || LPAD(item_number::text, 3, '0') AS sku,
@@ -42,12 +43,16 @@ SELECT
         )::numeric,
         2
     ) AS price,
-    'Seeded inventory item ' || LPAD(item_number::text, 3, '0') AS description
+    'Seeded inventory item ' || LPAD(item_number::text, 3, '0') AS description,
+    vendors.id AS vendor_id
 FROM generate_series(1, 75) AS seeded_items(item_number)
+JOIN vendors
+    ON vendors.vendor_code = 'VEN-' || LPAD((((item_number - 1) % 10) + 1)::text, 3, '0')
 ON CONFLICT (sku) DO UPDATE
 SET
     name = EXCLUDED.name,
     quantity = EXCLUDED.quantity,
     price = EXCLUDED.price,
     description = EXCLUDED.description,
+    vendor_id = EXCLUDED.vendor_id,
     updated_at = CURRENT_TIMESTAMP;
