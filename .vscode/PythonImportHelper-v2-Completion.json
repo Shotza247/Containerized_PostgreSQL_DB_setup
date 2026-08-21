@@ -129,6 +129,30 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "StringIO",
         "importPath": "io",
         "description": "io",
@@ -137,6 +161,30 @@
         "documentation": {}
     },
     {
+        "label": "asdict",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "is_dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
         "label": "dataclass",
         "importPath": "dataclasses",
         "description": "dataclasses",
@@ -153,6 +201,182 @@
         "documentation": {}
     },
     {
+        "label": "dataclass",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "check_connection",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "PostgresDB",
+        "importPath": "DB_SetUp",
+        "description": "DB_SetUp",
+        "isExtraImport": true,
+        "detail": "DB_SetUp",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerCreate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerUpdate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryCreate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryUpdate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "OrderCreate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "OrderStatusUpdate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "VendorCreate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "VendorUpdate",
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "isExtraImport": true,
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerService",
+        "importPath": "services.customers_service",
+        "description": "services.customers_service",
+        "isExtraImport": true,
+        "detail": "services.customers_service",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryService",
+        "importPath": "services.inventory_service",
+        "description": "services.inventory_service",
+        "isExtraImport": true,
+        "detail": "services.inventory_service",
+        "documentation": {}
+    },
+    {
+        "label": "OrderService",
+        "importPath": "services.orders_service",
+        "description": "services.orders_service",
+        "isExtraImport": true,
+        "detail": "services.orders_service",
+        "documentation": {}
+    },
+    {
+        "label": "VendorService",
+        "importPath": "services.vendors_service",
+        "description": "services.vendors_service",
+        "isExtraImport": true,
+        "detail": "services.vendors_service",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -166,6 +390,46 @@
         "description": "decimal",
         "isExtraImport": true,
         "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Customer",
+        "importPath": "models.customer",
+        "description": "models.customer",
+        "isExtraImport": true,
+        "detail": "models.customer",
+        "documentation": {}
+    },
+    {
+        "label": "Customer",
+        "importPath": "models.customer",
+        "description": "models.customer",
+        "isExtraImport": true,
+        "detail": "models.customer",
         "documentation": {}
     },
     {
@@ -193,6 +457,14 @@
         "documentation": {}
     },
     {
+        "label": "OrderWithDetails",
+        "importPath": "models.order",
+        "description": "models.order",
+        "isExtraImport": true,
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
         "label": "OrderWithInventory",
         "importPath": "models.order",
         "description": "models.order",
@@ -209,6 +481,14 @@
         "documentation": {}
     },
     {
+        "label": "OrderWithDetails",
+        "importPath": "models.order",
+        "description": "models.order",
+        "isExtraImport": true,
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
         "label": "OrderWithInventory",
         "importPath": "models.order",
         "description": "models.order",
@@ -217,23 +497,79 @@
         "documentation": {}
     },
     {
-        "label": "PostgresDB",
-        "importPath": "DB_SetUp",
-        "description": "DB_SetUp",
+        "label": "Vendor",
+        "importPath": "models.vendor",
+        "description": "models.vendor",
         "isExtraImport": true,
-        "detail": "DB_SetUp",
+        "detail": "models.vendor",
         "documentation": {}
     },
     {
-        "label": "PostgresDB",
-        "importPath": "DB_SetUp",
-        "description": "DB_SetUp",
+        "label": "Vendor",
+        "importPath": "models.vendor",
+        "description": "models.vendor",
         "isExtraImport": true,
-        "detail": "DB_SetUp",
+        "detail": "models.vendor",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPError",
+        "importPath": "urllib.error",
+        "description": "urllib.error",
+        "isExtraImport": true,
+        "detail": "urllib.error",
+        "documentation": {}
+    },
+    {
+        "label": "URLError",
+        "importPath": "urllib.error",
+        "description": "urllib.error",
+        "isExtraImport": true,
+        "detail": "urllib.error",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "urllib.request",
+        "description": "urllib.request",
+        "isExtraImport": true,
+        "detail": "urllib.request",
+        "documentation": {}
+    },
+    {
+        "label": "urlopen",
+        "importPath": "urllib.request",
+        "description": "urllib.request",
+        "isExtraImport": true,
+        "detail": "urllib.request",
+        "documentation": {}
+    },
+    {
+        "label": "customers_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
         "documentation": {}
     },
     {
         "label": "inventory_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
+        "documentation": {}
+    },
+    {
+        "label": "vendors_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
+        "documentation": {}
+    },
+    {
+        "label": "customers_repo",
         "importPath": "repository",
         "description": "repository",
         "isExtraImport": true,
@@ -250,6 +586,14 @@
     },
     {
         "label": "orders_repo",
+        "importPath": "repository",
+        "description": "repository",
+        "isExtraImport": true,
+        "detail": "repository",
+        "documentation": {}
+    },
+    {
+        "label": "vendors_repo",
         "importPath": "repository",
         "description": "repository",
         "isExtraImport": true,
@@ -2423,11 +2767,362 @@
         "documentation": {}
     },
     {
+        "label": "serialize",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def serialize(value):\n    if isinstance(value, list):\n        return [serialize(item) for item in value]\n    if is_dataclass(value):\n        return asdict(value)\n    return value\ndef payload_data(payload):\n    if hasattr(payload, \"model_dump\"):\n        return payload.model_dump()\n    return payload.dict()",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "payload_data",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def payload_data(payload):\n    if hasattr(payload, \"model_dump\"):\n        return payload.model_dump()\n    return payload.dict()\ndef bad_request(exc: ValueError) -> HTTPException:\n    return HTTPException(\n        status_code=status.HTTP_400_BAD_REQUEST,\n        detail=str(exc),\n    )\n@app.get(\"/\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "bad_request",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def bad_request(exc: ValueError) -> HTTPException:\n    return HTTPException(\n        status_code=status.HTTP_400_BAD_REQUEST,\n        detail=str(exc),\n    )\n@app.get(\"/\")\ndef root():\n    return {\n        \"name\": \"PostgreSQL Data Project Template API\",\n        \"runtime_path\": \"FastAPI -> Services -> Repositories -> DB_SetUp.py -> PostgreSQL\",",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def root():\n    return {\n        \"name\": \"PostgreSQL Data Project Template API\",\n        \"runtime_path\": \"FastAPI -> Services -> Repositories -> DB_SetUp.py -> PostgreSQL\",\n    }\n@app.get(\"/health\")\ndef health_check():\n    try:\n        version = check_connection()\n    except Exception as exc:",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "health_check",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def health_check():\n    try:\n        version = check_connection()\n    except Exception as exc:\n        raise HTTPException(\n            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,\n            detail=str(exc),\n        ) from exc\n    return {\"status\": \"ok\", \"postgres_version\": version}\n@app.get(\"/customers\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "list_customers",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def list_customers():\n    return serialize(customer_service.list_customers())\n@app.post(\"/customers\", status_code=status.HTTP_201_CREATED)\ndef create_customer(payload: CustomerCreate):\n    try:\n        customer = customer_service.create_customer(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(customer)\n@app.get(\"/customers/{customer_code}\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_customer",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def create_customer(payload: CustomerCreate):\n    try:\n        customer = customer_service.create_customer(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(customer)\n@app.get(\"/customers/{customer_code}\")\ndef get_customer(customer_code: str):\n    customer = customer_service.get_customer_by_code(customer_code)\n    if customer is None:",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_customer",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def get_customer(customer_code: str):\n    customer = customer_service.get_customer_by_code(customer_code)\n    if customer is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Customer not found.\")\n    return serialize(customer)\n@app.put(\"/customers/{customer_code}\")\ndef update_customer(customer_code: str, payload: CustomerUpdate):\n    try:\n        customer = customer_service.update_customer(\n            customer_code=customer_code,",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "update_customer",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def update_customer(customer_code: str, payload: CustomerUpdate):\n    try:\n        customer = customer_service.update_customer(\n            customer_code=customer_code,\n            **payload_data(payload),\n        )\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    if customer is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Customer not found.\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "delete_customer",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def delete_customer(customer_code: str):\n    deleted = customer_service.delete_customer(customer_code)\n    if not deleted:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Customer not found.\")\n    return {\"deleted\": True}\n@app.get(\"/vendors\")\ndef list_vendors():\n    return serialize(vendor_service.list_vendors())\n@app.post(\"/vendors\", status_code=status.HTTP_201_CREATED)\ndef create_vendor(payload: VendorCreate):",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "list_vendors",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def list_vendors():\n    return serialize(vendor_service.list_vendors())\n@app.post(\"/vendors\", status_code=status.HTTP_201_CREATED)\ndef create_vendor(payload: VendorCreate):\n    try:\n        vendor = vendor_service.create_vendor(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(vendor)\n@app.get(\"/vendors/{vendor_code}\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_vendor",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def create_vendor(payload: VendorCreate):\n    try:\n        vendor = vendor_service.create_vendor(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(vendor)\n@app.get(\"/vendors/{vendor_code}\")\ndef get_vendor(vendor_code: str):\n    vendor = vendor_service.get_vendor_by_code(vendor_code)\n    if vendor is None:",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_vendor",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def get_vendor(vendor_code: str):\n    vendor = vendor_service.get_vendor_by_code(vendor_code)\n    if vendor is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Vendor not found.\")\n    return serialize(vendor)\n@app.put(\"/vendors/{vendor_code}\")\ndef update_vendor(vendor_code: str, payload: VendorUpdate):\n    try:\n        vendor = vendor_service.update_vendor(\n            vendor_code=vendor_code,",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "update_vendor",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def update_vendor(vendor_code: str, payload: VendorUpdate):\n    try:\n        vendor = vendor_service.update_vendor(\n            vendor_code=vendor_code,\n            **payload_data(payload),\n        )\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    if vendor is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Vendor not found.\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "delete_vendor",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def delete_vendor(vendor_code: str):\n    deleted = vendor_service.delete_vendor(vendor_code)\n    if not deleted:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Vendor not found.\")\n    return {\"deleted\": True}\n@app.get(\"/inventory\")\ndef list_inventory(q: str | None = Query(default=None)):\n    if q:\n        return serialize(inventory_service.search_items(q))\n    return serialize(inventory_service.list_items())",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "list_inventory",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def list_inventory(q: str | None = Query(default=None)):\n    if q:\n        return serialize(inventory_service.search_items(q))\n    return serialize(inventory_service.list_items())\n@app.post(\"/inventory\", status_code=status.HTTP_201_CREATED)\ndef create_inventory_item(payload: InventoryCreate):\n    try:\n        item = inventory_service.create_item(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_inventory_item",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def create_inventory_item(payload: InventoryCreate):\n    try:\n        item = inventory_service.create_item(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(item)\n@app.get(\"/inventory/{sku}\")\ndef get_inventory_item(sku: str):\n    item = inventory_service.get_item_by_sku(sku)\n    if item is None:",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_inventory_item",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def get_inventory_item(sku: str):\n    item = inventory_service.get_item_by_sku(sku)\n    if item is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Inventory item not found.\")\n    return serialize(item)\n@app.put(\"/inventory/{item_id}\")\ndef update_inventory_item(item_id: int, payload: InventoryUpdate):\n    try:\n        item = inventory_service.update_item(\n            item_id=item_id,",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "update_inventory_item",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def update_inventory_item(item_id: int, payload: InventoryUpdate):\n    try:\n        item = inventory_service.update_item(\n            item_id=item_id,\n            **payload_data(payload),\n        )\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    if item is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Inventory item not found.\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "delete_inventory_item",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def delete_inventory_item(item_id: int):\n    deleted = inventory_service.delete_item(item_id)\n    if not deleted:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Inventory item not found.\")\n    return {\"deleted\": True}\n@app.get(\"/orders\")\ndef list_orders():\n    return serialize(order_service.list_orders_with_details())\n@app.post(\"/orders\", status_code=status.HTTP_201_CREATED)\ndef create_order(payload: OrderCreate):",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "list_orders",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def list_orders():\n    return serialize(order_service.list_orders_with_details())\n@app.post(\"/orders\", status_code=status.HTTP_201_CREATED)\ndef create_order(payload: OrderCreate):\n    try:\n        order = order_service.place_order(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(order)\n@app.get(\"/orders/{order_number}\")",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_order",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def create_order(payload: OrderCreate):\n    try:\n        order = order_service.place_order(**payload_data(payload))\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    return serialize(order)\n@app.get(\"/orders/{order_number}\")\ndef get_order(order_number: str):\n    order = order_service.get_order_by_number(order_number)\n    if order is None:",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_order",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def get_order(order_number: str):\n    order = order_service.get_order_by_number(order_number)\n    if order is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Order not found.\")\n    return serialize(order)\n@app.patch(\"/orders/{order_number}/status\")\ndef update_order_status(order_number: str, payload: OrderStatusUpdate):\n    try:\n        updated = order_service.update_status(order_number, payload.status)\n    except ValueError as exc:",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "update_order_status",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def update_order_status(order_number: str, payload: OrderStatusUpdate):\n    try:\n        updated = order_service.update_status(order_number, payload.status)\n    except ValueError as exc:\n        raise bad_request(exc) from exc\n    if not updated:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Order not found.\")\n    return serialize(order_service.get_order_by_number(order_number))\n@app.delete(\"/orders/{order_number}\")\ndef delete_order(order_number: str):",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "delete_order",
+        "kind": 2,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "def delete_order(order_number: str):\n    deleted = order_service.delete_order(order_number)\n    if not deleted:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Order not found.\")\n    return {\"deleted\": True}",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "app = FastAPI(\n    title=\"PostgreSQL Data Project Template API\",\n    version=\"1.0.0\",\n)\ncustomer_service = CustomerService()\ninventory_service = InventoryService()\norder_service = OrderService()\nvendor_service = VendorService()\ndef serialize(value):\n    if isinstance(value, list):",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "customer_service",
+        "kind": 5,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "customer_service = CustomerService()\ninventory_service = InventoryService()\norder_service = OrderService()\nvendor_service = VendorService()\ndef serialize(value):\n    if isinstance(value, list):\n        return [serialize(item) for item in value]\n    if is_dataclass(value):\n        return asdict(value)\n    return value",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "inventory_service",
+        "kind": 5,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "inventory_service = InventoryService()\norder_service = OrderService()\nvendor_service = VendorService()\ndef serialize(value):\n    if isinstance(value, list):\n        return [serialize(item) for item in value]\n    if is_dataclass(value):\n        return asdict(value)\n    return value\ndef payload_data(payload):",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "order_service",
+        "kind": 5,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "order_service = OrderService()\nvendor_service = VendorService()\ndef serialize(value):\n    if isinstance(value, list):\n        return [serialize(item) for item in value]\n    if is_dataclass(value):\n        return asdict(value)\n    return value\ndef payload_data(payload):\n    if hasattr(payload, \"model_dump\"):",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "vendor_service",
+        "kind": 5,
+        "importPath": "api.main",
+        "description": "api.main",
+        "peekOfCode": "vendor_service = VendorService()\ndef serialize(value):\n    if isinstance(value, list):\n        return [serialize(item) for item in value]\n    if is_dataclass(value):\n        return asdict(value)\n    return value\ndef payload_data(payload):\n    if hasattr(payload, \"model_dump\"):\n        return payload.model_dump()",
+        "detail": "api.main",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerCreate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class CustomerCreate(BaseModel):\n    customer_code: str = Field(..., min_length=1)\n    first_name: str = Field(..., min_length=1)\n    last_name: str = Field(..., min_length=1)\n    email: str = Field(..., min_length=3)\n    phone: str | None = None\n    city: str | None = None\nclass CustomerUpdate(BaseModel):\n    first_name: str = Field(..., min_length=1)\n    last_name: str = Field(..., min_length=1)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerUpdate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class CustomerUpdate(BaseModel):\n    first_name: str = Field(..., min_length=1)\n    last_name: str = Field(..., min_length=1)\n    email: str = Field(..., min_length=3)\n    phone: str | None = None\n    city: str | None = None\nclass VendorCreate(BaseModel):\n    vendor_code: str = Field(..., min_length=1)\n    name: str = Field(..., min_length=1)\n    email: str = Field(..., min_length=3)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "VendorCreate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class VendorCreate(BaseModel):\n    vendor_code: str = Field(..., min_length=1)\n    name: str = Field(..., min_length=1)\n    email: str = Field(..., min_length=3)\n    phone: str | None = None\n    city: str | None = None\nclass VendorUpdate(BaseModel):\n    name: str = Field(..., min_length=1)\n    email: str = Field(..., min_length=3)\n    phone: str | None = None",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "VendorUpdate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class VendorUpdate(BaseModel):\n    name: str = Field(..., min_length=1)\n    email: str = Field(..., min_length=3)\n    phone: str | None = None\n    city: str | None = None\nclass InventoryCreate(BaseModel):\n    sku: str = Field(..., min_length=1)\n    name: str = Field(..., min_length=1)\n    quantity: int = Field(..., ge=0)\n    price: Decimal = Field(..., ge=0)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryCreate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class InventoryCreate(BaseModel):\n    sku: str = Field(..., min_length=1)\n    name: str = Field(..., min_length=1)\n    quantity: int = Field(..., ge=0)\n    price: Decimal = Field(..., ge=0)\n    description: str | None = None\n    vendor_code: str | None = None\nclass InventoryUpdate(BaseModel):\n    sku: str = Field(..., min_length=1)\n    name: str = Field(..., min_length=1)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "InventoryUpdate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class InventoryUpdate(BaseModel):\n    sku: str = Field(..., min_length=1)\n    name: str = Field(..., min_length=1)\n    quantity: int = Field(..., ge=0)\n    price: Decimal = Field(..., ge=0)\n    description: str | None = None\n    vendor_code: str | None = None\nclass OrderCreate(BaseModel):\n    order_number: str = Field(..., min_length=1)\n    customer_code: str = Field(..., min_length=1)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "OrderCreate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class OrderCreate(BaseModel):\n    order_number: str = Field(..., min_length=1)\n    customer_code: str = Field(..., min_length=1)\n    sku: str = Field(..., min_length=1)\n    quantity_ordered: int = Field(..., gt=0)\n    status: str = Field(default=\"pending\", min_length=1)\nclass OrderStatusUpdate(BaseModel):\n    status: str = Field(..., min_length=1)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "OrderStatusUpdate",
+        "kind": 6,
+        "importPath": "api.schemas",
+        "description": "api.schemas",
+        "peekOfCode": "class OrderStatusUpdate(BaseModel):\n    status: str = Field(..., min_length=1)",
+        "detail": "api.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Customer",
+        "kind": 6,
+        "importPath": "models.customer",
+        "description": "models.customer",
+        "peekOfCode": "class Customer:\n    id: int\n    customer_code: str\n    first_name: str\n    last_name: str\n    email: str\n    phone: str | None\n    city: str | None\n    created_at: datetime\n    updated_at: datetime",
+        "detail": "models.customer",
+        "documentation": {}
+    },
+    {
         "label": "InventoryItem",
         "kind": 6,
         "importPath": "models.inventory",
         "description": "models.inventory",
-        "peekOfCode": "class InventoryItem:\n    id: int\n    sku: str\n    name: str\n    quantity: int\n    price: Decimal\n    description: str | None\n    created_at: datetime\n    updated_at: datetime\n    @classmethod",
+        "peekOfCode": "class InventoryItem:\n    id: int\n    sku: str\n    name: str\n    quantity: int\n    price: Decimal\n    description: str | None\n    vendor_id: int | None\n    created_at: datetime\n    updated_at: datetime",
         "detail": "models.inventory",
         "documentation": {}
     },
@@ -2436,7 +3131,7 @@
         "kind": 6,
         "importPath": "models.order",
         "description": "models.order",
-        "peekOfCode": "class Order:\n    id: int\n    order_number: str\n    inventory_id: int\n    quantity_ordered: int\n    unit_price: Decimal\n    status: str\n    created_at: datetime\n    updated_at: datetime\n    @property",
+        "peekOfCode": "class Order:\n    id: int\n    order_number: str\n    customer_id: int | None\n    inventory_id: int\n    quantity_ordered: int\n    unit_price: Decimal\n    status: str\n    created_at: datetime\n    updated_at: datetime",
         "detail": "models.order",
         "documentation": {}
     },
@@ -2447,6 +3142,87 @@
         "description": "models.order",
         "peekOfCode": "class OrderWithInventory:\n    id: int\n    order_number: str\n    inventory_id: int\n    inventory_sku: str\n    inventory_name: str\n    quantity_ordered: int\n    unit_price: Decimal\n    status: str\n    created_at: datetime",
         "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "OrderWithDetails",
+        "kind": 6,
+        "importPath": "models.order",
+        "description": "models.order",
+        "peekOfCode": "class OrderWithDetails:\n    id: int\n    order_number: str\n    customer_id: int | None\n    customer_code: str | None\n    customer_name: str | None\n    inventory_id: int\n    inventory_sku: str\n    inventory_name: str\n    quantity_ordered: int",
+        "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "Vendor",
+        "kind": 6,
+        "importPath": "models.vendor",
+        "description": "models.vendor",
+        "peekOfCode": "class Vendor:\n    id: int\n    vendor_code: str\n    name: str\n    email: str\n    phone: str | None\n    city: str | None\n    created_at: datetime\n    updated_at: datetime\n    @classmethod",
+        "detail": "models.vendor",
+        "documentation": {}
+    },
+    {
+        "label": "create_customer",
+        "kind": 2,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "def create_customer(\n    connection,\n    customer_code: str,\n    first_name: str,\n    last_name: str,\n    email: str,\n    phone: str | None = None,\n    city: str | None = None,\n) -> int:\n    with connection.cursor() as cursor:",
+        "detail": "repository.customers_repo",
+        "documentation": {}
+    },
+    {
+        "label": "get_customer_by_id",
+        "kind": 2,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "def get_customer_by_id(connection, customer_id: int) -> Customer | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {CUSTOMER_COLUMNS}\n            FROM customers\n            WHERE id = %s;\n            \"\"\",\n            (customer_id,),",
+        "detail": "repository.customers_repo",
+        "documentation": {}
+    },
+    {
+        "label": "get_customer_by_code",
+        "kind": 2,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "def get_customer_by_code(connection, customer_code: str) -> Customer | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {CUSTOMER_COLUMNS}\n            FROM customers\n            WHERE customer_code = %s;\n            \"\"\",\n            (customer_code,),",
+        "detail": "repository.customers_repo",
+        "documentation": {}
+    },
+    {
+        "label": "list_customers",
+        "kind": 2,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "def list_customers(connection) -> list[Customer]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {CUSTOMER_COLUMNS}\n            FROM customers\n            ORDER BY customer_code;\n            \"\"\"\n        )",
+        "detail": "repository.customers_repo",
+        "documentation": {}
+    },
+    {
+        "label": "update_customer",
+        "kind": 2,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "def update_customer(\n    connection,\n    customer_code: str,\n    first_name: str,\n    last_name: str,\n    email: str,\n    phone: str | None = None,\n    city: str | None = None,\n) -> bool:\n    with connection.cursor() as cursor:",
+        "detail": "repository.customers_repo",
+        "documentation": {}
+    },
+    {
+        "label": "delete_customer",
+        "kind": 2,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "def delete_customer(connection, customer_code: str) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            DELETE FROM customers\n            WHERE customer_code = %s;\n            \"\"\",\n            (customer_code,),\n        )\n        return cursor.rowcount > 0",
+        "detail": "repository.customers_repo",
+        "documentation": {}
+    },
+    {
+        "label": "CUSTOMER_COLUMNS",
+        "kind": 5,
+        "importPath": "repository.customers_repo",
+        "description": "repository.customers_repo",
+        "peekOfCode": "CUSTOMER_COLUMNS = \"\"\"\n    id,\n    customer_code,\n    first_name,\n    last_name,\n    email,\n    phone,\n    city,\n    created_at,\n    updated_at",
+        "detail": "repository.customers_repo",
         "documentation": {}
     },
     {
@@ -2463,7 +3239,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def create_item(\n    connection,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,\n    description: str | None = None,\n) -> int:\n    with connection.cursor() as cursor:\n        cursor.execute(",
+        "peekOfCode": "def create_item(\n    connection,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,\n    description: str | None = None,\n    vendor_id: int | None = None,\n) -> int:\n    with connection.cursor() as cursor:",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2508,7 +3284,7 @@
         "kind": 2,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "def update_item(\n    connection,\n    item_id: int,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,\n    description: str | None = None,\n) -> bool:\n    with connection.cursor() as cursor:",
+        "peekOfCode": "def update_item(\n    connection,\n    item_id: int,\n    sku: str,\n    name: str,\n    quantity: int,\n    price,\n    description: str | None = None,\n    vendor_id: int | None = None,\n) -> bool:",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2535,7 +3311,7 @@
         "kind": 5,
         "importPath": "repository.inventory_repo",
         "description": "repository.inventory_repo",
-        "peekOfCode": "INVENTORY_COLUMNS = \"\"\"\n    id,\n    sku,\n    name,\n    quantity,\n    price,\n    description,\n    created_at,\n    updated_at\n\"\"\"",
+        "peekOfCode": "INVENTORY_COLUMNS = \"\"\"\n    id,\n    sku,\n    name,\n    quantity,\n    price,\n    description,\n    vendor_id,\n    created_at,\n    updated_at",
         "detail": "repository.inventory_repo",
         "documentation": {}
     },
@@ -2544,7 +3320,7 @@
         "kind": 2,
         "importPath": "repository.orders_repo",
         "description": "repository.orders_repo",
-        "peekOfCode": "def create_order(\n    connection,\n    order_number: str,\n    inventory_id: int,\n    quantity_ordered: int,\n    unit_price,\n    status: str = \"pending\",\n) -> int:\n    with connection.cursor() as cursor:\n        cursor.execute(",
+        "peekOfCode": "def create_order(\n    connection,\n    order_number: str,\n    customer_id: int | None,\n    inventory_id: int,\n    quantity_ordered: int,\n    unit_price,\n    status: str = \"pending\",\n) -> int:\n    with connection.cursor() as cursor:",
         "detail": "repository.orders_repo",
         "documentation": {}
     },
@@ -2585,6 +3361,15 @@
         "documentation": {}
     },
     {
+        "label": "list_orders_with_details",
+        "kind": 2,
+        "importPath": "repository.orders_repo",
+        "description": "repository.orders_repo",
+        "peekOfCode": "def list_orders_with_details(connection) -> list[OrderWithDetails]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            SELECT\n                orders.id,\n                orders.order_number,\n                orders.customer_id,\n                customers.customer_code,\n                customers.first_name || ' ' || customers.last_name AS customer_name,",
+        "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
         "label": "update_order_status",
         "kind": 2,
         "importPath": "repository.orders_repo",
@@ -2607,8 +3392,107 @@
         "kind": 5,
         "importPath": "repository.orders_repo",
         "description": "repository.orders_repo",
-        "peekOfCode": "ORDER_COLUMNS = \"\"\"\n    id,\n    order_number,\n    inventory_id,\n    quantity_ordered,\n    unit_price,\n    status,\n    created_at,\n    updated_at\n\"\"\"",
+        "peekOfCode": "ORDER_COLUMNS = \"\"\"\n    id,\n    order_number,\n    customer_id,\n    inventory_id,\n    quantity_ordered,\n    unit_price,\n    status,\n    created_at,\n    updated_at",
         "detail": "repository.orders_repo",
+        "documentation": {}
+    },
+    {
+        "label": "create_vendor",
+        "kind": 2,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "def create_vendor(\n    connection,\n    vendor_code: str,\n    name: str,\n    email: str,\n    phone: str | None = None,\n    city: str | None = None,\n) -> int:\n    with connection.cursor() as cursor:\n        cursor.execute(",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "get_vendor_by_id",
+        "kind": 2,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "def get_vendor_by_id(connection, vendor_id: int) -> Vendor | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {VENDOR_COLUMNS}\n            FROM vendors\n            WHERE id = %s;\n            \"\"\",\n            (vendor_id,),",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "get_vendor_by_code",
+        "kind": 2,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "def get_vendor_by_code(connection, vendor_code: str) -> Vendor | None:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {VENDOR_COLUMNS}\n            FROM vendors\n            WHERE vendor_code = %s;\n            \"\"\",\n            (vendor_code,),",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "list_vendors",
+        "kind": 2,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "def list_vendors(connection) -> list[Vendor]:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            f\"\"\"\n            SELECT\n                {VENDOR_COLUMNS}\n            FROM vendors\n            ORDER BY vendor_code;\n            \"\"\"\n        )",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "update_vendor",
+        "kind": 2,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "def update_vendor(\n    connection,\n    vendor_code: str,\n    name: str,\n    email: str,\n    phone: str | None = None,\n    city: str | None = None,\n) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "delete_vendor",
+        "kind": 2,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "def delete_vendor(connection, vendor_code: str) -> bool:\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            DELETE FROM vendors\n            WHERE vendor_code = %s;\n            \"\"\",\n            (vendor_code,),\n        )\n        return cursor.rowcount > 0",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "VENDOR_COLUMNS",
+        "kind": 5,
+        "importPath": "repository.vendors_repo",
+        "description": "repository.vendors_repo",
+        "peekOfCode": "VENDOR_COLUMNS = \"\"\"\n    id,\n    vendor_code,\n    name,\n    email,\n    phone,\n    city,\n    created_at,\n    updated_at\n\"\"\"",
+        "detail": "repository.vendors_repo",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "kind": 2,
+        "importPath": "scripts.smoke_test_api",
+        "description": "scripts.smoke_test_api",
+        "peekOfCode": "def request(method: str, path: str, payload: dict | None = None):\n    data = None\n    headers = {\"Content-Type\": \"application/json\"}\n    if payload is not None:\n        data = json.dumps(payload).encode(\"utf-8\")\n    req = Request(\n        f\"{BASE_URL}{path}\",\n        data=data,\n        headers=headers,\n        method=method,",
+        "detail": "scripts.smoke_test_api",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "scripts.smoke_test_api",
+        "description": "scripts.smoke_test_api",
+        "peekOfCode": "def main() -> int:\n    suffix = datetime.now().strftime(\"%Y%m%d%H%M%S\")\n    vendor_code = f\"VEN-API-{suffix}\"\n    customer_code = f\"CUS-API-{suffix}\"\n    sku = f\"SKU-API-{suffix}\"\n    order_number = f\"ORD-API-{suffix}\"\n    status, _ = request(\"GET\", \"/\")\n    print(f\"PASS GET / -> {status}\")\n    status, _ = request(\"GET\", \"/health\")\n    print(f\"PASS GET /health -> {status}\")",
+        "detail": "scripts.smoke_test_api",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_URL",
+        "kind": 5,
+        "importPath": "scripts.smoke_test_api",
+        "description": "scripts.smoke_test_api",
+        "peekOfCode": "BASE_URL = \"http://127.0.0.1:8000\"\ndef request(method: str, path: str, payload: dict | None = None):\n    data = None\n    headers = {\"Content-Type\": \"application/json\"}\n    if payload is not None:\n        data = json.dumps(payload).encode(\"utf-8\")\n    req = Request(\n        f\"{BASE_URL}{path}\",\n        data=data,\n        headers=headers,",
+        "detail": "scripts.smoke_test_api",
+        "documentation": {}
+    },
+    {
+        "label": "CustomerService",
+        "kind": 6,
+        "importPath": "services.customers_service",
+        "description": "services.customers_service",
+        "peekOfCode": "class CustomerService:\n    def __init__(self, db: PostgresDB | None = None) -> None:\n        self.db = db or PostgresDB()\n    def create_customer(\n        self,\n        customer_code: str,\n        first_name: str,\n        last_name: str,\n        email: str,\n        phone: str | None = None,",
+        "detail": "services.customers_service",
         "documentation": {}
     },
     {
@@ -2625,8 +3509,17 @@
         "kind": 6,
         "importPath": "services.orders_service",
         "description": "services.orders_service",
-        "peekOfCode": "class OrderService:\n    def __init__(self, db: PostgresDB | None = None) -> None:\n        self.db = db or PostgresDB()\n    def place_order(\n        self,\n        order_number: str,\n        sku: str,\n        quantity_ordered: int,\n        status: str = \"pending\",\n    ) -> Order:",
+        "peekOfCode": "class OrderService:\n    def __init__(self, db: PostgresDB | None = None) -> None:\n        self.db = db or PostgresDB()\n    def place_order(\n        self,\n        order_number: str,\n        customer_code: str,\n        sku: str,\n        quantity_ordered: int,\n        status: str = \"pending\",",
         "detail": "services.orders_service",
+        "documentation": {}
+    },
+    {
+        "label": "VendorService",
+        "kind": 6,
+        "importPath": "services.vendors_service",
+        "description": "services.vendors_service",
+        "peekOfCode": "class VendorService:\n    def __init__(self, db: PostgresDB | None = None) -> None:\n        self.db = db or PostgresDB()\n    def create_vendor(\n        self,\n        vendor_code: str,\n        name: str,\n        email: str,\n        phone: str | None = None,\n        city: str | None = None,",
+        "detail": "services.vendors_service",
         "documentation": {}
     },
     {
@@ -2751,7 +3644,7 @@
         "kind": 2,
         "importPath": "Postgres_SetUp",
         "description": "Postgres_SetUp",
-        "peekOfCode": "def run_inventory_demo() -> None:\n    from services.inventory_service import InventoryService\n    from services.orders_service import OrderService\n    inventory_service = InventoryService()\n    order_service = OrderService()\n    demo_suffix = datetime.now().strftime(\"%Y%m%d%H%M%S\")\n    sku = f\"DEMO-{demo_suffix}\"\n    order_number = f\"ORD-DEMO-{demo_suffix}\"\n    item = inventory_service.create_item(\n        sku=sku,",
+        "peekOfCode": "def run_inventory_demo() -> None:\n    from services.customers_service import CustomerService\n    from services.inventory_service import InventoryService\n    from services.orders_service import OrderService\n    from services.vendors_service import VendorService\n    customer_service = CustomerService()\n    inventory_service = InventoryService()\n    order_service = OrderService()\n    vendor_service = VendorService()\n    demo_suffix = datetime.now().strftime(\"%Y%m%d%H%M%S\")",
         "detail": "Postgres_SetUp",
         "documentation": {}
     },
