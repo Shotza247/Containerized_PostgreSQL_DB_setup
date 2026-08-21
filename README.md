@@ -24,12 +24,22 @@ PostgresSQl_setup/
   docker-compose.yml
   .env.example
   requirements.txt
+  api/
+    __init__.py
+    main.py
+    schemas.py
   database/
     schema/
       001_create_inventory_table.sql
       002_add_inventory_description_column.sql
       003_create_orders_table.sql
+      004_create_customers_table.sql
+      005_create_vendors_table.sql
+      006_add_inventory_vendor_id.sql
+      007_add_orders_customer_id.sql
     seed/
+      000_customers_seed.sql
+      000_vendors_seed.sql
       001_inventory_seed.sql
       002_orders_seed.sql
       003_update_inventory_item.sql
@@ -37,16 +47,28 @@ PostgresSQl_setup/
       reset_inventory.sql
   repository/
     __init__.py
+    customers_repo.py
     inventory_repo.py
     orders_repo.py
+    vendors_repo.py
   services/
     __init__.py
+    customers_service.py
     inventory_service.py
     orders_service.py
+    vendors_service.py
   models/
     __init__.py
+    customer.py
     inventory.py
     order.py
+    vendor.py
+  scripts/
+    smoke_test_api.py
+  docs/
+    audits/
+    templates/
+      TEMPLATE_2_STREAMLIT_DASHBOARD.md
   utils/
 ```
 
@@ -63,13 +85,15 @@ These files are the reusable PostgreSQL template:
 - `database/schema` stores ordered schema scripts.
 - `database/seed` stores ordered seed and update scripts.
 - `database/dev` stores local-only reset scripts.
+- `api/` exposes the implemented runtime path through FastAPI endpoints.
 
 ## Implemented Sample App Layer
 
-These folders are now set up as a working `inventory` and `orders` sample app.
-They show how a real codebase can sit on top of the reusable PostgreSQL
-template:
+These folders are now set up as a working `customers`, `vendors`, `inventory`,
+and `orders` sample app. They show how a real codebase can sit on top of the
+reusable PostgreSQL template:
 
+- `api/` contains FastAPI routes and request schemas.
 - `repository/` contains raw SQL data-access functions.
 - `services/` contains business workflows and validation.
 - `models/` contains Python representations of database objects.
@@ -139,6 +163,24 @@ Run the example inventory/order service flow:
 py Postgres_SetUp.py demo
 ```
 
+Run the FastAPI backend:
+
+```powershell
+uvicorn api.main:app --reload
+```
+
+Open the interactive API docs:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+In a second terminal, run the endpoint smoke test:
+
+```powershell
+py scripts/smoke_test_api.py
+```
+
 ## Command Reference
 
 | Command | Purpose |
@@ -150,12 +192,63 @@ py Postgres_SetUp.py demo
 | `py Postgres_SetUp.py reset` | Runs development reset scripts. |
 | `py Postgres_SetUp.py demo` | Runs the implemented inventory/order service demo. |
 
+## FastAPI Runtime Endpoints
+
+FastAPI is the runtime entry point for testing the application layer:
+
+```text
+FastAPI -> Services -> Repositories -> DB_SetUp.py -> PostgreSQL
+```
+
+Current endpoint groups:
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/health` | Check PostgreSQL connectivity. |
+| `GET` | `/customers` | List customers. |
+| `POST` | `/customers` | Create a customer. |
+| `GET` | `/customers/{customer_code}` | Get one customer. |
+| `PUT` | `/customers/{customer_code}` | Update a customer. |
+| `DELETE` | `/customers/{customer_code}` | Delete a customer. |
+| `GET` | `/vendors` | List vendors. |
+| `POST` | `/vendors` | Create a vendor. |
+| `GET` | `/vendors/{vendor_code}` | Get one vendor. |
+| `PUT` | `/vendors/{vendor_code}` | Update a vendor. |
+| `DELETE` | `/vendors/{vendor_code}` | Delete a vendor. |
+| `GET` | `/inventory` | List inventory, or search with `?q=value`. |
+| `POST` | `/inventory` | Create inventory supplied by an optional vendor. |
+| `GET` | `/inventory/{sku}` | Get one inventory item. |
+| `PUT` | `/inventory/{item_id}` | Update one inventory item. |
+| `DELETE` | `/inventory/{item_id}` | Delete one inventory item. |
+| `GET` | `/orders` | List orders with customer and inventory details. |
+| `POST` | `/orders` | Place an order for a customer and reduce inventory stock. |
+| `GET` | `/orders/{order_number}` | Get one order. |
+| `PATCH` | `/orders/{order_number}/status` | Update order status. |
+| `DELETE` | `/orders/{order_number}` | Delete one order. |
+
+### FastAPI Smoke Test Flow
+
+The smoke test in `scripts/smoke_test_api.py` checks the full runtime path:
+
+```text
+FastAPI -> Services -> Repositories -> DB_SetUp.py -> PostgreSQL
+```
+
+It creates:
+
+- one vendor
+- one customer
+- one inventory item connected to the vendor
+- one order connected to the customer and inventory item
+
+Then it reads the created order and lists order details.
+
 ## Template Blueprint
 
 ```mermaid
 flowchart TD
     A[Developer] --> B[Postgres_SetUp.py CLI]
-    A --> C[Application Code]
+    A --> C[FastAPI Routes]
 
     subgraph Setup["Database Setup And Admin Path"]
         B --> D[DB_SetUp.py]
@@ -187,10 +280,36 @@ runtime path should go through `services/` first, then `repository/`, then
 
 ```mermaid
 erDiagram
+    CUSTOMERS ||--o{ ORDERS : "places"
+    VENDORS ||--o{ INVENTORY : "supplies"
     INVENTORY ||--o{ ORDERS : "has orders"
+
+    CUSTOMERS {
+        int id PK
+        varchar customer_code UK
+        varchar first_name
+        varchar last_name
+        varchar email UK
+        varchar phone
+        varchar city
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    VENDORS {
+        int id PK
+        varchar vendor_code UK
+        varchar name
+        varchar email UK
+        varchar phone
+        varchar city
+        timestamp created_at
+        timestamp updated_at
+    }
 
     INVENTORY {
         int id PK
+        int vendor_id FK
         varchar sku UK
         varchar name
         int quantity
@@ -203,6 +322,7 @@ erDiagram
     ORDERS {
         int id PK
         varchar order_number UK
+        int customer_id FK
         int inventory_id FK
         int quantity_ordered
         numeric unit_price
@@ -220,11 +340,17 @@ Schema files should be additive and ordered:
 001_create_inventory_table.sql
 002_add_inventory_description_column.sql
 003_create_orders_table.sql
+004_create_customers_table.sql
+005_create_vendors_table.sql
+006_add_inventory_vendor_id.sql
+007_add_orders_customer_id.sql
 ```
 
 Seed files should also be ordered:
 
 ```text
+000_customers_seed.sql
+000_vendors_seed.sql
 001_inventory_seed.sql
 002_orders_seed.sql
 003_update_inventory_item.sql
@@ -232,6 +358,8 @@ Seed files should also be ordered:
 
 The current seed setup creates:
 
+- 40 customers
+- 10 vendors
 - 75 inventory items
 - 120 orders connected to inventory items
 - 1 follow-up inventory item update for `SKU001`
@@ -245,6 +373,37 @@ Prefer repeatable SQL when possible:
 
 ## Current Tables
 
+### `customers`
+
+Stores people or accounts buying inventory items.
+
+Important columns:
+
+- `id`: primary key
+- `customer_code`: unique customer code
+- `first_name`: customer first name
+- `last_name`: customer last name
+- `email`: unique customer email
+- `phone`: optional phone number
+- `city`: optional city
+- `created_at`: row creation timestamp
+- `updated_at`: row update timestamp
+
+### `vendors`
+
+Stores suppliers providing inventory items.
+
+Important columns:
+
+- `id`: primary key
+- `vendor_code`: unique vendor code
+- `name`: vendor name
+- `email`: unique vendor email
+- `phone`: optional phone number
+- `city`: optional city
+- `created_at`: row creation timestamp
+- `updated_at`: row update timestamp
+
 ### `inventory`
 
 Stores products or stock items.
@@ -252,6 +411,7 @@ Stores products or stock items.
 Important columns:
 
 - `id`: primary key
+- `vendor_id`: optional foreign key to `vendors(id)`
 - `sku`: unique item code
 - `name`: item name
 - `quantity`: available stock
@@ -268,6 +428,7 @@ Important columns:
 
 - `id`: primary key
 - `order_number`: unique order code
+- `customer_id`: optional foreign key to `customers(id)`
 - `inventory_id`: foreign key to `inventory(id)`
 - `quantity_ordered`: number of units ordered
 - `unit_price`: price used on the order
@@ -282,19 +443,27 @@ Use this to check that orders are connected to inventory:
 ```sql
 SELECT
     orders.order_number,
+    customers.customer_code,
+    customers.first_name || ' ' || customers.last_name AS customer_name,
     inventory.sku,
     inventory.name,
+    vendors.vendor_code,
+    vendors.name AS vendor_name,
     orders.quantity_ordered,
     orders.unit_price,
     orders.status
 FROM orders
 JOIN inventory ON inventory.id = orders.inventory_id
+LEFT JOIN customers ON customers.id = orders.customer_id
+LEFT JOIN vendors ON vendors.id = inventory.vendor_id
 ORDER BY orders.order_number;
 ```
 
 Check the seed counts:
 
 ```sql
+SELECT COUNT(*) AS customer_count FROM customers;
+SELECT COUNT(*) AS vendor_count FROM vendors;
 SELECT COUNT(*) AS inventory_count FROM inventory;
 SELECT COUNT(*) AS order_count FROM orders;
 ```
@@ -370,14 +539,18 @@ Repository files should contain database access only:
 Example:
 
 ```text
+repository/customers_repo.py
 repository/inventory_repo.py
 repository/orders_repo.py
+repository/vendors_repo.py
 ```
 
 Current repository responsibilities:
 
+- `customers_repo.py` handles customer CRUD and lookup.
 - `inventory_repo.py` handles item CRUD, item lookup, item search, and stock quantity updates.
-- `orders_repo.py` handles order CRUD, order lookup, status updates, and order/inventory joins.
+- `orders_repo.py` handles order CRUD, order lookup, status updates, and order detail joins.
+- `vendors_repo.py` handles vendor CRUD and lookup.
 
 Repositories should not call `commit()` or `rollback()` directly. The service
 or database helper owns transactions so multi-step workflows can succeed or
@@ -388,21 +561,26 @@ fail as one unit.
 Service files should contain business rules:
 
 - check whether inventory has enough stock
-- create an order and reduce inventory in one transaction
+- create an order for a customer and reduce inventory in one transaction
+- connect inventory items to vendors
 - validate inputs before calling repository functions
 - coordinate multiple repositories
 
 Example:
 
 ```text
+services/customers_service.py
 services/inventory_service.py
 services/orders_service.py
+services/vendors_service.py
 ```
 
 Current service responsibilities:
 
-- `InventoryService` validates item input and wraps inventory repository calls.
-- `OrderService` places orders, checks stock, creates the order, and reduces inventory in one transaction.
+- `CustomerService` validates and manages customers.
+- `VendorService` validates and manages vendors.
+- `InventoryService` validates item input, resolves vendor codes, and wraps inventory repository calls.
+- `OrderService` places customer orders, checks stock, creates the order, and reduces inventory in one transaction.
 
 ### Models
 
@@ -422,6 +600,7 @@ class InventoryItem:
     quantity: int
     price: Decimal
     description: str | None
+    vendor_id: int | None
     created_at: datetime
     updated_at: datetime
 ```
@@ -431,21 +610,41 @@ values easier to understand than raw tuples.
 
 Current models:
 
+- `Customer`
 - `InventoryItem`
 - `Order`
+- `OrderWithDetails`
 - `OrderWithInventory`
+- `Vendor`
 
 ## Service Usage Example
 
 Use services from application code instead of calling repositories directly:
 
 ```python
+from services.customers_service import CustomerService
 from services.inventory_service import InventoryService
 from services.orders_service import OrderService
+from services.vendors_service import VendorService
 
 
+customer_service = CustomerService()
 inventory_service = InventoryService()
 order_service = OrderService()
+vendor_service = VendorService()
+
+vendor = vendor_service.create_vendor(
+    vendor_code="VEN-100",
+    name="Example Supplier",
+    email="vendor100@example.com",
+)
+
+customer = customer_service.create_customer(
+    customer_code="CUS-100",
+    first_name="Example",
+    last_name="Customer",
+    email="customer100@example.com",
+)
 
 item = inventory_service.create_item(
     sku="SKU100",
@@ -453,10 +652,12 @@ item = inventory_service.create_item(
     quantity=12,
     price=3500.00,
     description="27 inch display",
+    vendor_code=vendor.vendor_code,
 )
 
 order = order_service.place_order(
     order_number="ORD-100",
+    customer_code=customer.customer_code,
     sku=item.sku,
     quantity_ordered=2,
     status="paid",
@@ -481,6 +682,18 @@ Use the audit trail to document:
 
 Current audit entries live in `docs/audits/`. Use
 `docs/audits/AUDIT_TEMPLATE.md` when adding a new audit entry.
+
+## Future Template 2
+
+Streamlit dashboards are intentionally not included in this backend template.
+The planned next template is documented in
+`docs/templates/TEMPLATE_2_STREAMLIT_DASHBOARD.md`.
+
+That future project should follow this path:
+
+```text
+Streamlit Dashboard -> FastAPI API -> Services -> Repositories -> PostgreSQL
+```
 
 ## Docker Commands
 
@@ -512,6 +725,7 @@ To embed only the core PostgreSQL template into another Python project, copy:
 
 To also include the sample app architecture, copy:
 
+- `api/`
 - `models/`
 - `repository/`
 - `services/`

@@ -5,14 +5,39 @@ from logging_config import logger
 
 
 def run_inventory_demo() -> None:
+    from services.customers_service import CustomerService
     from services.inventory_service import InventoryService
     from services.orders_service import OrderService
+    from services.vendors_service import VendorService
 
+    customer_service = CustomerService()
     inventory_service = InventoryService()
     order_service = OrderService()
+    vendor_service = VendorService()
     demo_suffix = datetime.now().strftime("%Y%m%d%H%M%S")
+    customer_code = f"CUS-DEMO-{demo_suffix}"
+    vendor_code = f"VEN-DEMO-{demo_suffix}"
     sku = f"DEMO-{demo_suffix}"
     order_number = f"ORD-DEMO-{demo_suffix}"
+
+    vendor = vendor_service.create_vendor(
+        vendor_code=vendor_code,
+        name="Demo Vendor",
+        email=f"vendor-{demo_suffix}@example.com",
+        phone="+27-11-000-0000",
+        city="Johannesburg",
+    )
+    logger.info("Created vendor: %s", vendor)
+
+    customer = customer_service.create_customer(
+        customer_code=customer_code,
+        first_name="Demo",
+        last_name="Customer",
+        email=f"customer-{demo_suffix}@example.com",
+        phone="+27-10-000-0000",
+        city="Cape Town",
+    )
+    logger.info("Created customer: %s", customer)
 
     item = inventory_service.create_item(
         sku=sku,
@@ -20,6 +45,7 @@ def run_inventory_demo() -> None:
         quantity=5,
         price=9999.99,
         description="Created by the service-layer demo.",
+        vendor_code=vendor_code,
     )
     logger.info("Created inventory item: %s", item)
 
@@ -30,25 +56,33 @@ def run_inventory_demo() -> None:
         quantity=10,
         price=12999.99,
         description="Updated by the service-layer demo.",
+        vendor_code=vendor_code,
     )
     logger.info("Updated inventory item: %s", updated_item)
 
     order = order_service.place_order(
         order_number=order_number,
+        customer_code=customer_code,
         sku=sku,
         quantity_ordered=2,
         status="paid",
     )
     logger.info("Created order: %s", order)
 
-    orders = order_service.list_orders_with_inventory()
-    logger.info("Orders with inventory: %s", orders)
+    orders = order_service.list_orders_with_details()
+    logger.info("Orders with details: %s", orders)
 
     order_deleted = order_service.delete_order(order_number)
     logger.info("Deleted demo order: %s", order_deleted)
 
     item_deleted = inventory_service.delete_item(item.id)
     logger.info("Deleted demo inventory item: %s", item_deleted)
+
+    customer_deleted = customer_service.delete_customer(customer_code)
+    logger.info("Deleted demo customer: %s", customer_deleted)
+
+    vendor_deleted = vendor_service.delete_vendor(vendor_code)
+    logger.info("Deleted demo vendor: %s", vendor_deleted)
 
 
 def build_parser() -> argparse.ArgumentParser:
