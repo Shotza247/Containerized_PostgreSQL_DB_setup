@@ -13,6 +13,7 @@ a new dated audit entry under `docs/audits/`.
 | --- | --- | --- |
 | 2026-08-19 | [Project Development Audit](docs/audits/2026-08-19_project_development_audit.md) | Reusable PostgreSQL template, inventory/orders schema, services, repositories, models, seed data, diagrams, and README evolution. |
 | 2026-08-20 | [FastAPI Runtime And CRM/Vendor Expansion Audit](docs/audits/2026-08-20_fastapi_runtime_crm_vendor_audit.md) | Customers/vendors schema, four-table domain model, FastAPI endpoints, API smoke test script, and Template 2 Streamlit planning note. |
+| 2026-08-21 | [Database Name Docker Volume Reset Audit](docs/audits/2026-08-21_database_name_volume_reset_audit.md) | Documented why changing `DB_NAME` after Postgres volume initialization can cause missing-database connection errors, and added the reset-volume fix to Quick Start. |
 
 ## Current Architecture Rule
 

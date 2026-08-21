@@ -127,6 +127,22 @@ Start PostgreSQL:
 docker compose up -d
 ```
 
+Fix Option: Reset Docker Volume
+
+If you change database environment variables after the container already exists,
+especially `DB_NAME`, reset the Docker volume before checking the connection.
+For example, changing from the default `postgres` database to a project database
+like `EcommerceStore` will not automatically create the new database inside an
+already-initialized Postgres volume.
+
+This reset deletes the local Docker database volume and recreates PostgreSQL
+using the current `.env` values:
+
+```powershell
+docker compose down -v
+docker compose up -d
+```
+
 Check the database connection:
 
 ```powershell
